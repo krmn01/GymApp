@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GymApp.Application.Interfaces.Persistence
 {
-    public interface IGenericRepository<T> where T : BaseEntity
+    public interface IGenericRepository<T> where T : class
     {
         Task<T> CreateAsync(T entity);
         Task<T> UpdateAsync(T entity);

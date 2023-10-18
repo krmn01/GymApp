@@ -3,9 +3,44 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AD89A5ED-ACB4-45D0-B129-B9CD85779C45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0B525528-CAB0-4D13-9339-505337FDB871}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{5D908A79-F242-4AF6-B6A2-7D141254E44D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1C86CA23-A1E5-456C-B2F6-5D181F5F89AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D07EE6E2-E21B-4F67-B933-3FDD0ECB647E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp.Domain", "GymApp.Domain\GymApp.Domain.csproj", "{AF180408-6D31-4A72-96BE-93B00F839081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp.Application", "GymApp.Application\GymApp.Application.csproj", "{4A11132B-62C3-4302-9DEE-BA81EC1C9AE2}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF180408-6D31-4A72-96BE-93B00F839081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF180408-6D31-4A72-96BE-93B00F839081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF180408-6D31-4A72-96BE-93B00F839081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF180408-6D31-4A72-96BE-93B00F839081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A11132B-62C3-4302-9DEE-BA81EC1C9AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A11132B-62C3-4302-9DEE-BA81EC1C9AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A11132B-62C3-4302-9DEE-BA81EC1C9AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A11132B-62C3-4302-9DEE-BA81EC1C9AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D908A79-F242-4AF6-B6A2-7D141254E44D} = {AD89A5ED-ACB4-45D0-B129-B9CD85779C45}
+		{1C86CA23-A1E5-456C-B2F6-5D181F5F89AA} = {AD89A5ED-ACB4-45D0-B129-B9CD85779C45}
+		{D07EE6E2-E21B-4F67-B933-3FDD0ECB647E} = {AD89A5ED-ACB4-45D0-B129-B9CD85779C45}
+		{AF180408-6D31-4A72-96BE-93B00F839081} = {1C86CA23-A1E5-456C-B2F6-5D181F5F89AA}
+		{4A11132B-62C3-4302-9DEE-BA81EC1C9AE2} = {1C86CA23-A1E5-456C-B2F6-5D181F5F89AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98DABFE7-C77B-43BB-8109-698A7E4671E3}

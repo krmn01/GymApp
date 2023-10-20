@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GymApp.Application.Features.ApplicationUser.Queries.GetUsersData;
 using GymApp.Domain.Entities;
 using System;
 using System.Collections.Generic;

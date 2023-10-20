@@ -8,22 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GymApp.Application.Features.ApplicationUser.Queries.GetUsersData
+namespace GymApp.Application.Features.ApplicationUser.Commands.DeleteUser
 {
-    public class GetUsersDataQueryHandler : IRequestHandler<GetUsersDataQuery, ApplicationUserDTO>
+    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, Unit>
     {
         private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
-        public GetUsersDataQueryHandler(IMapper mapper, IUserRepository userRepository)
+        public DeleteUserCommandHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            _mapper = mapper;
         }
-        public async Task<ApplicationUserDTO> Handle(GetUsersDataQuery request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByIdAsync(request.id) ??
                 throw new NotFoundException(request.id, typeof(Domain.Entities.ApplicationUser).ToString());
-            return _mapper.Map<ApplicationUserDTO>(user);
+            await _userRepository.DeleteAsync(user);
+            return Unit.Value;
         }
     }
 }

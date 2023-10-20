@@ -13,9 +13,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{1C86CA23-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D07EE6E2-E21B-4F67-B933-3FDD0ECB647E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp.Domain", "GymApp.Domain\GymApp.Domain.csproj", "{AF180408-6D31-4A72-96BE-93B00F839081}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymApp.Domain", "GymApp.Domain\GymApp.Domain.csproj", "{AF180408-6D31-4A72-96BE-93B00F839081}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp.Application", "GymApp.Application\GymApp.Application.csproj", "{4A11132B-62C3-4302-9DEE-BA81EC1C9AE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymApp.Application", "GymApp.Application\GymApp.Application.csproj", "{4A11132B-62C3-4302-9DEE-BA81EC1C9AE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9FE91BEA-D590-4336-B81B-EB9870BA99BF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

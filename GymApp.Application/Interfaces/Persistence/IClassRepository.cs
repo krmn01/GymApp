@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GymApp.Application.Interfaces.Persistence
 {
-    public interface IClassRepository:IGenericRepository<Class>
+    public interface IClassRepository :IGenericRepository<Class>
     {
 
     }

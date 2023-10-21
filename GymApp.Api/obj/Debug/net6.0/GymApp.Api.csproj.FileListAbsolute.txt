@@ -87,3 +87,8 @@ C:\Users\Admin\Documents\net\GymApp\GymApp.Api\obj\Debug\net6.0\refint\GymApp.Ap
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\obj\Debug\net6.0\GymApp.Api.pdb
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\obj\Debug\net6.0\GymApp.Api.genruntimeconfig.cache
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\obj\Debug\net6.0\ref\GymApp.Api.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Identity.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Identity.pdb

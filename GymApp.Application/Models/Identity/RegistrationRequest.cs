@@ -22,7 +22,7 @@ namespace GymApp.Application.Models.Identity
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [MinLength(15)]
+        [MinLength(8)]
         public string FullName { get; set; }
 
         [Required]

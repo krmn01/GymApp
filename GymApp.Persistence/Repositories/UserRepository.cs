@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace GymApp.Persistence.Repositories
 {
-    public class UserRepository :GenericRepository<ApplicationUser>,IUserRepository
-    {
-        public UserRepository(GymDatabaseContext context) : base(context)
-        {
-        }
+    //public class UserRepository :GenericRepository<ApplicationUser>,IUserRepository
+    //{
+    //    public UserRepository(GymDatabaseContext context) : base(context)
+    //    {
+    //    }
 
-        public async Task<bool> IsUserNameUnique(string username)
-        {
-            return await _context.Users.AnyAsync(u => u.UserName == username);
-        }
+    //    public async Task<bool> IsUserNameUnique(string username)
+    //    {
+    //        return await _context.Users.AnyAsync(u => u.UserName == username);
+    //    }
 
-    }
+    //}
 }

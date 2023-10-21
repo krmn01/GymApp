@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace GymApp.Persistence.Configuration
 {
-    public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
-    {
-        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
-        {
+    //public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
+    //{
+    //    public void Configure(EntityTypeBuilder<ApplicationUser> builder)
+    //    {
             
-        }
-    }
+    //    }
+    //}
 }

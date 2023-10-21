@@ -13,7 +13,7 @@ namespace GymApp.Persistence.DatabaseContext
 {
     public class GymDatabaseContext : DbContext
     {
-        public DbSet<ApplicationUser> Users { get; set; }
+        //public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Class> Classes { get; set; }
         public DbSet<PersonalTrainer> PersonalTrainers { get; set; }
 

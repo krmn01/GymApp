@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GymApp.Application\GymApp.Application.csproj" />
+    <ProjectReference Include="..\GymApp.Identity\GymApp.Identity.csproj" />
     <ProjectReference Include="..\GymApp.Infrastructure\GymApp.Infrastructure.csproj" />
     <ProjectReference Include="..\GymApp.Persistence\GymApp.Persistence.csproj" />
   </ItemGroup>

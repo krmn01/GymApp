@@ -11,20 +11,25 @@ namespace GymApp.Application.Features.ApplicationUser.Commands.UpdateUser
 {
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Unit>
     {
-        private readonly IUserRepository _userRepository;
+        //private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public UpdateUserCommandHandler(IUserRepository userRepository,IMapper mapper)
+        public Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            _mapper = mapper;
-            _userRepository = userRepository;
+            throw new NotImplementedException();
         }
-        public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
-        {
-            //TODO: validation
-            var updatedUser = _mapper.Map<Domain.Entities.ApplicationUser>(request);
-            await _userRepository.UpdateAsync(updatedUser);
-            return Unit.Value;
-        }
+
+        //public UpdateUserCommandHandler(IUserRepository userRepository,IMapper mapper)
+        //{
+        //    _mapper = mapper;
+        //    _userRepository = userRepository;
+        //}
+        //public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        //{
+        //    //TODO: validation
+        //    var updatedUser = _mapper.Map<Domain.Entities.ApplicationUser>(request);
+        //    await _userRepository.UpdateAsync(updatedUser);
+        //    return Unit.Value;
+        //}
     }
 }

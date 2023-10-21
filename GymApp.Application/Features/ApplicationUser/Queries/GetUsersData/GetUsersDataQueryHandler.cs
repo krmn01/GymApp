@@ -12,18 +12,23 @@ namespace GymApp.Application.Features.ApplicationUser.Queries.GetUsersData
 {
     public class GetUsersDataQueryHandler : IRequestHandler<GetUsersDataQuery, ApplicationUserDTO>
     {
-        private readonly IUserRepository _userRepository;
+       // private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        public GetUsersDataQueryHandler(IMapper mapper, IUserRepository userRepository)
+
+        public Task<ApplicationUserDTO> Handle(GetUsersDataQuery request, CancellationToken cancellationToken)
         {
-            _userRepository = userRepository;
-            _mapper = mapper;
+            throw new NotImplementedException();
         }
-        public async Task<ApplicationUserDTO> Handle(GetUsersDataQuery request, CancellationToken cancellationToken)
-        {
-            var user = await _userRepository.GetByIdAsync(request.id) ??
-                throw new NotFoundException(request.id, typeof(Domain.Entities.ApplicationUser).ToString());
-            return _mapper.Map<ApplicationUserDTO>(user);
-        }
+        //public GetUsersDataQueryHandler(IMapper mapper, IUserRepository userRepository)
+        //{
+        //    _userRepository = userRepository;
+        //    _mapper = mapper;
+        //}
+        //public async Task<ApplicationUserDTO> Handle(GetUsersDataQuery request, CancellationToken cancellationToken)
+        //{
+        //    var user = await _userRepository.GetByIdAsync(request.id) ??
+        //        throw new NotFoundException(request.id, typeof(Domain.Entities.ApplicationUser).ToString());
+        //    return _mapper.Map<ApplicationUserDTO>(user);
+        //}
     }
 }

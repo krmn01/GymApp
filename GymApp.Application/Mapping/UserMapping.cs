@@ -13,7 +13,7 @@ namespace GymApp.Application.Mapping
     {
         public UserMapping()
         {
-            CreateMap<ApplicationUserDTO,ApplicationUser>().ReverseMap();
+            //CreateMap<ApplicationUserDTO,ApplicationUser>().ReverseMap();
         }
     }
 }

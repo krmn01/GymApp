@@ -12,17 +12,22 @@ namespace GymApp.Application.Features.ApplicationUser.Commands.DeleteUser
 {
     public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, Unit>
     {
-        private readonly IUserRepository _userRepository;
-        public DeleteUserCommandHandler(IUserRepository userRepository)
+        //private readonly IUserRepository _userRepository;
+        //public DeleteUserCommandHandler(IUserRepository userRepository)
+        //{
+        //    _userRepository = userRepository;
+        //}
+
+        public Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
-            _userRepository = userRepository;
+            throw new NotImplementedException();
         }
-        public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
-        {
-            var user = await _userRepository.GetByIdAsync(request.id) ??
-                throw new NotFoundException(request.id, typeof(Domain.Entities.ApplicationUser).ToString());
-            await _userRepository.DeleteAsync(user);
-            return Unit.Value;
-        }
+        //public async Task<Unit> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+        //{
+        //    var user = await _userRepository.GetByIdAsync(request.id) ??
+        //        throw new NotFoundException(request.id, typeof(Domain.Entities.ApplicationUser).ToString());
+        //    await _userRepository.DeleteAsync(user);
+        //    return Unit.Value;
+        //}
     }
 }

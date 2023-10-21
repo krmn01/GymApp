@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using GymApp.Application.Interfaces.Identity;
+using GymApp.Application.Models.Identity;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,11 +10,23 @@ namespace GymApp.Api.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly IAuthService _authService;
 
-        public AuthenticationController(IMediator mediator)
+        public AuthenticationController(IAuthService authService)
         {
-            _mediator = mediator;
+            _authService = authService;
+        }
+
+        [HttpPost("login")]
+        public async Task<AuthResponse> Login([FromBody]AuthRequest request)
+        {
+            return await _authService.Login(request);   
+        }
+
+        [HttpPost("register")]
+        public async Task<RegistrationResponse> Register([FromBody] RegistrationRequest request)
+        {
+            return await _authService.Register(request);
         }
     }
 }

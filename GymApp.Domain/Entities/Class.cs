@@ -13,7 +13,7 @@ namespace GymApp.Domain.Entities
         [Required]
         [StringLength(100)]
         public string ClassName { get; set; }
-        public List<ApplicationUser> Users { get; set; } = new List<ApplicationUser>();
+        //public List<ApplicationUser> Users { get; set; } = new List<ApplicationUser>();
         public PersonalTrainer PersonalTrainer { get; set; }
     }
 }

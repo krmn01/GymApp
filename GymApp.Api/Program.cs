@@ -1,6 +1,7 @@
 using GymApp.Infrastructure;
 using GymApp.Application;
 using GymApp.Persistence;
+using GymApp.Identity;
 
 namespace GymApp.Api
 {
@@ -14,6 +15,7 @@ namespace GymApp.Api
             builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
+            builder.Services.AddIdentityServices(builder.Configuration);
 
             builder.Services.AddControllers();
 
@@ -36,7 +38,9 @@ namespace GymApp.Api
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("all");
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

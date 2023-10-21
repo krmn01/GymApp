@@ -1,4 +1,6 @@
-﻿using GymApp.Persistence.DatabaseContext;
+﻿using GymApp.Application.Interfaces.Persistence;
+using GymApp.Persistence.DatabaseContext;
+using GymApp.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,12 @@ namespace GymApp.Persistence
             {
                 options.UseSqlServer(configuration.GetConnectionString("MssqlConnectionString"));
             });
+
+            services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+            services.AddScoped<IUserRepository,UserRepository>();
+            services.AddScoped<IPersonalTrainerRepository,PersonalTrainerRepository>();
+            services.AddScoped<IClassRepository,ClassRepository>();
+
             return services;
         }
     }

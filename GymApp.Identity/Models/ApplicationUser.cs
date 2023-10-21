@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GymApp.Domain.Entities
+namespace GymApp.Identity.Models
 {
     public class ApplicationUser :IdentityUser
     {

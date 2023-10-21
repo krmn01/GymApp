@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp.Infrastructure", "Gy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp.Api", "GymApp.Api\GymApp.Api.csproj", "{DE6150D8-7262-4C7D-9433-91464DF8BE90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymApp.Identity", "GymApp.Identity\GymApp.Identity.csproj", "{7418986B-9238-4D3B-8124-7D3F601B1D29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{DE6150D8-7262-4C7D-9433-91464DF8BE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE6150D8-7262-4C7D-9433-91464DF8BE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE6150D8-7262-4C7D-9433-91464DF8BE90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7418986B-9238-4D3B-8124-7D3F601B1D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7418986B-9238-4D3B-8124-7D3F601B1D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7418986B-9238-4D3B-8124-7D3F601B1D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7418986B-9238-4D3B-8124-7D3F601B1D29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{5A772552-36C7-4082-BA5C-4482BBA85E49} = {D07EE6E2-E21B-4F67-B933-3FDD0ECB647E}
 		{5B38D6AB-2284-4159-891F-04352ED42CAE} = {D07EE6E2-E21B-4F67-B933-3FDD0ECB647E}
 		{DE6150D8-7262-4C7D-9433-91464DF8BE90} = {5D908A79-F242-4AF6-B6A2-7D141254E44D}
+		{7418986B-9238-4D3B-8124-7D3F601B1D29} = {D07EE6E2-E21B-4F67-B933-3FDD0ECB647E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98DABFE7-C77B-43BB-8109-698A7E4671E3}

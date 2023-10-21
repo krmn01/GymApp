@@ -11,15 +11,19 @@ namespace GymApp.Domain.Entities
     public class PersonalTrainer :BaseEntity
     {
         [Required]
+        [StringLength(30)]
         public string Name { get; set; } = string.Empty;
         
         [Required]
+        [StringLength(30)]
         public string Surname { get; set; } = string.Empty;
 
         [Required]
+        [StringLength(9)]
         public string PhoneNumber { get;set; } = string.Empty;
 
-        [Required] 
+        [Required]
+        [EmailAddress]
         public string Email { get; set; } = string.Empty;
 
     }

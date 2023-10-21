@@ -9,6 +9,6 @@ namespace GymApp.Application.Interfaces.Persistence
 {
     public interface IUserRepository : IGenericRepository<ApplicationUser>
     {
-
+        Task<bool> IsUserNameUnique(string username);
     }
 }

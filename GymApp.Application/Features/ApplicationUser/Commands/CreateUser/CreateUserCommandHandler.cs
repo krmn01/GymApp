@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GymApp.Application.Exceptions;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
 using MediatR;
@@ -21,7 +22,11 @@ namespace GymApp.Application.Features.ApplicationUser.Commands.CreateUser
         }
         public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            //TODO: Add validation
+            //TODO: finish validation
+            var validator = new CreateUserCommandValidator(_userRepository);
+            var validationResult = await validator.ValidateAsync(request);
+
+            if (validationResult.Errors.Any()) throw new BadRequestException("Signing up failed",validationResult);
 
             var newUser = _mapper.Map<Domain.Entities.ApplicationUser>(request);
             await _userRepository.CreateAsync(newUser);

@@ -11,6 +11,7 @@ namespace GymApp.Domain.Entities
     public class ApplicationUser :IdentityUser
     {
         [Required]
+        [StringLength(40)]
         public string FullName { get; set; } = string.Empty;
 
     }

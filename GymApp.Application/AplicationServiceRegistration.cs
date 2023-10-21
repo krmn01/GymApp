@@ -11,7 +11,7 @@ namespace GymApp.Application
 {
     public static class AplicationServiceRegistration
     {
-        public static IServiceCollection AddServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());

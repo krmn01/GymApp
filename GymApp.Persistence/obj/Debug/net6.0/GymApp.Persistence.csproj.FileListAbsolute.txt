@@ -1,0 +1,17 @@
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\bin\Debug\net6.0\GymApp.Persistence.deps.json
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\bin\Debug\net6.0\GymApp.Persistence.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\bin\Debug\net6.0\GymApp.Persistence.pdb
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\bin\Debug\net6.0\GymApp.Application.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\bin\Debug\net6.0\GymApp.Domain.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\bin\Debug\net6.0\GymApp.Application.pdb
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\bin\Debug\net6.0\GymApp.Domain.pdb
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\obj\Debug\net6.0\GymApp.Persistence.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\obj\Debug\net6.0\GymApp.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\obj\Debug\net6.0\GymApp.Persistence.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\obj\Debug\net6.0\GymApp.Persistence.AssemblyInfo.cs
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\obj\Debug\net6.0\GymApp.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\obj\Debug\net6.0\GymApp.Persistence.csproj.CopyComplete
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\obj\Debug\net6.0\GymApp.Persistence.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\obj\Debug\net6.0\refint\GymApp.Persistence.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\obj\Debug\net6.0\GymApp.Persistence.pdb
+C:\Users\Admin\Documents\net\GymApp\GymApp.Persistence\obj\Debug\net6.0\ref\GymApp.Persistence.dll

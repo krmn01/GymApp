@@ -1,0 +1,17 @@
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\bin\Debug\net6.0\GymApp.Infrastructure.deps.json
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\bin\Debug\net6.0\GymApp.Infrastructure.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\bin\Debug\net6.0\GymApp.Infrastructure.pdb
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\bin\Debug\net6.0\GymApp.Application.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\bin\Debug\net6.0\GymApp.Domain.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\bin\Debug\net6.0\GymApp.Application.pdb
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\bin\Debug\net6.0\GymApp.Domain.pdb
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\obj\Debug\net6.0\GymApp.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\obj\Debug\net6.0\GymApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\obj\Debug\net6.0\GymApp.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\obj\Debug\net6.0\GymApp.Infrastructure.AssemblyInfo.cs
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\obj\Debug\net6.0\GymApp.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\obj\Debug\net6.0\GymApp.Infrastructure.csproj.CopyComplete
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\obj\Debug\net6.0\GymApp.Infrastructure.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\obj\Debug\net6.0\refint\GymApp.Infrastructure.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\obj\Debug\net6.0\GymApp.Infrastructure.pdb
+C:\Users\Admin\Documents\net\GymApp\GymApp.Infrastructure\obj\Debug\net6.0\ref\GymApp.Infrastructure.dll

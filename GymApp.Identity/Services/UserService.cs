@@ -33,17 +33,24 @@ namespace GymApp.Identity.Services
             }).ToList();
         }
 
-        public async Task<User> GetUserById(string id)
+        public async Task<GetUserResponse> GetUserById(string id)
         {
-            var user = await _userManager.FindByNameAsync(id);
+            var user = await _userManager.FindByIdAsync(id);
             if (user == null) throw new NotFoundException(id, typeof(User).ToString());
-            return new User
+            var applicationUser = new User
             {
                 Id = user.Id,
                 FullName = user.FullName,
                 UserName = user.UserName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
+            };
+
+            return new GetUserResponse
+            {
+                Succeeded = true,
+                Data = applicationUser,
+                StatusCode = 200,
             };
         }
     }

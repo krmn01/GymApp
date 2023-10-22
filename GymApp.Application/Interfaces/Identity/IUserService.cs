@@ -1,4 +1,5 @@
 ﻿using GymApp.Application.Models.Identity;
+using GymApp.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace GymApp.Application.Interfaces.Identity
     public interface IUserService
     {
         Task<List<User>> GetAllUsersAsync();
-        Task<User> GetUserById(string id);
+        Task<GetUserResponse> GetUserById(string id);
     }
 }

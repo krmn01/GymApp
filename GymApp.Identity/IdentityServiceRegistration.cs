@@ -1,6 +1,7 @@
 ﻿using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Models.Identity;
 using GymApp.Identity.DatabaseContext;
+using GymApp.Identity.Helpers;
 using GymApp.Identity.Models;
 using GymApp.Identity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -34,6 +35,7 @@ namespace GymApp.Identity
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IJwtHelper, JwtHelper>();
 
             services.AddAuthentication(options =>
             {

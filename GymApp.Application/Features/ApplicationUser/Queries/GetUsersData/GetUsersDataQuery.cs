@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace GymApp.Application.Features.ApplicationUser.Queries.GetUsersData
 {
-    public record GetUsersDataQuery(Guid id) :IRequest<ApplicationUserDTO>;
+    public record GetUsersDataQuery(string id) :IRequest<ApplicationUserDTO>;
 }

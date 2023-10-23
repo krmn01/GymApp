@@ -13,6 +13,7 @@ namespace GymApp.Application.Exceptions
         public BadRequestException(string message,ValidationResult validationResult) :base($"[{DateTime.Now.ToString("HH:mm:ss")}] {message}")
         {
             _errors = new();
+            if (validationResult == null) return;
             foreach(var error in validationResult.Errors)
             {
                 _errors.Add(error.ErrorMessage);

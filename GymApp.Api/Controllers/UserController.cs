@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Models.Identity;
+using GymApp.Domain.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,5 +27,14 @@ namespace GymApp.Api.Controllers
             var id = _jwtHelper.GetIdFromToken(token);
             return await _userService.GetUserById(id);
         }
+
+        [HttpPut("change-password")]
+        [Authorize]
+        public async Task<Response<string>> ChangePassword([FromHeader(Name = "Authorization")] string token, UpdatePasswordRequest request)
+        {
+            var id = _jwtHelper.GetIdFromToken(token);
+            return await _userService.UpdatePasswordAsync(id,request);
+        }
+
     }
 }

@@ -14,5 +14,9 @@ namespace GymApp.Identity.Models
         [StringLength(40)]
         public string FullName { get; set; } = string.Empty;
 
+        [MinLength(9)]
+        [StringLength(9)]
+        public override string? PhoneNumber { get; set; } = string.Empty;
+
     }
 }

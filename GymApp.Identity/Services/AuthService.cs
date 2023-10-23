@@ -41,11 +41,11 @@ namespace GymApp.Identity.Services
 
             return new AuthResponse
             {
-                Id = user.Id,
-                UserName = user.UserName,
-                FullName = user.FullName,
-                Email = user.Email,
-                Token = new JwtSecurityTokenHandler().WriteToken(token)
+                StatusCode = 200,
+                Succeeded = true,
+                Errors = null,
+                Message = "User successfully loged in",
+                Data = new JwtSecurityTokenHandler().WriteToken(token)
             };
         }
 
@@ -88,7 +88,10 @@ namespace GymApp.Identity.Services
                 FullName = request.FullName,
                 Email = request.Email,
                 EmailConfirmed = true,
+                PhoneNumber = request.PhoneNumber,
             };
+
+            if (user.PhoneNumber != null && user.PhoneNumber != string.Empty) user.PhoneNumberConfirmed = true; 
 
             var result = await _userManager.CreateAsync(user, request.Password);
             if (result.Succeeded)

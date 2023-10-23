@@ -33,13 +33,5 @@ namespace GymApp.Api.Controllers
         {
             return await _authService.Register(request);
         }
-
-        [HttpGet("profile")]
-        [Authorize]
-        public async Task<GetUserResponse> GetUser([FromHeader(Name = "Authorization")] string token)
-        {
-            var id = _jwtHelper.GetIdFromToken(token);
-            return await _userService.GetUserById(id);
-        }
     }
 }

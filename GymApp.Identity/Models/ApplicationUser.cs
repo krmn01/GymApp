@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using GymApp.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,6 +18,9 @@ namespace GymApp.Identity.Models
         [MinLength(9)]
         [StringLength(9)]
         public override string? PhoneNumber { get; set; } = string.Empty;
+
+        [Required]
+        public Guid ProfilePictureId { get; set; } = Guid.Parse("00000000-0000-0000-0000-000000000001");
 
     }
 }

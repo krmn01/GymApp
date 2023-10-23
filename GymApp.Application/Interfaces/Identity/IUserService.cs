@@ -12,7 +12,7 @@ namespace GymApp.Application.Interfaces.Identity
     {
         Task<List<User>> GetAllUsersAsync();
         Task<GetUserResponse> GetUserById(string id);
-
         Task<Response<string>> UpdatePasswordAsync(string id, UpdatePasswordRequest request);
+        Task<Response<string>> UpdateProfilePicture(string id, byte[] picture);
     }
 }

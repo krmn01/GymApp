@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GymApp.Application.Features.ApplicationUser.Commands.UpdateUser
 {
-    public class UpdateUserCommand :IRequest<Unit>
+    public class UpdatePictureCommand :IRequest<Unit>
     {
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }

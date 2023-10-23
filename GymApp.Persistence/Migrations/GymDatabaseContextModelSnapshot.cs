@@ -85,6 +85,34 @@ namespace GymApp.Persistence.Migrations
                     b.ToTable("PersonalTrainers");
                 });
 
+            modelBuilder.Entity("GymApp.Domain.Entities.ProfilePicture", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Picture")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProfilePictures");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("00000000-0000-0000-0000-000000000001"),
+                            Picture = new byte[] { 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 0, 0, 0 }
+                        });
+                });
+
             modelBuilder.Entity("GymApp.Domain.Entities.Class", b =>
                 {
                     b.HasOne("GymApp.Domain.Entities.PersonalTrainer", "PersonalTrainer")

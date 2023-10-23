@@ -70,6 +70,9 @@ namespace GymApp.Identity.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<Guid>("ProfilePictureId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -97,17 +100,18 @@ namespace GymApp.Identity.Migrations
                         {
                             Id = "753caff9-598a-42d9-aa00-bfa3be83096a",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bf7e6c42-0e6f-4854-99ab-7811760976c1",
+                            ConcurrencyStamp = "ed536b00-2700-4dc5-9178-291f17429f21",
                             Email = "adm@adm.pl",
                             EmailConfirmed = true,
                             FullName = "Admin Admin",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADM@ADM.PL",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAELZs3Rka4lIlISlrmBJKf8v/pj4JsDO702Zr6YkrQQBtJVuqSQ846ilWlcYjkpF0Vg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFBM8OUYWDNlOJ1feJVmmyAMKwTFCE7Aj3s12sWeYML5y+AUYurafYuDjWdUbEtE+w==",
                             PhoneNumber = "",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e6bcd246-1e66-49e9-a129-e63dca7bf029",
+                            ProfilePictureId = new Guid("00000000-0000-0000-0000-000000000001"),
+                            SecurityStamp = "c8ea94b7-b468-4f41-a197-ff3a28f845bd",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -115,17 +119,18 @@ namespace GymApp.Identity.Migrations
                         {
                             Id = "4a60b6be-42d4-4676-86ef-bbfe129011da",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2c84b631-88b1-42ec-b022-028ab1dff53d",
+                            ConcurrencyStamp = "446cab56-99c5-45f3-a074-89f7379eedae",
                             Email = "usr1@usr.pl",
                             EmailConfirmed = true,
                             FullName = "Test User",
                             LockoutEnabled = false,
                             NormalizedEmail = "USR1@USR.PL",
                             NormalizedUserName = "TESTUSER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJ+NewWdpY/7eCosKpwNNxxB7vTIL76YJfPEGP4pzy+b19iY832aFrgV4KYBNv+92g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMHGrE8UN0g/BvnhIHt+p9LQ4f7jmImroXd4IlssTp2Wt9Iv40St2C4I7bjFr+49JA==",
                             PhoneNumber = "",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cd959487-7b5b-4e99-b561-ac96674f1bcd",
+                            ProfilePictureId = new Guid("00000000-0000-0000-0000-000000000001"),
+                            SecurityStamp = "f70135af-3a08-4268-bf48-bf4a582cd0a7",
                             TwoFactorEnabled = false,
                             UserName = "TestUser"
                         });
@@ -161,14 +166,14 @@ namespace GymApp.Identity.Migrations
                         new
                         {
                             Id = "crcl2137-2222-4448-beef-1add431acrcl",
-                            ConcurrencyStamp = "84a33f4a-a154-4a1b-a3bb-dbf774c3216b",
+                            ConcurrencyStamp = "afb01289-d794-49d0-8950-584fb9002439",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = "crcl3317-2222-4445-beef-1add431fcrcl",
-                            ConcurrencyStamp = "81145670-ce46-4e0b-a01d-0c79a18707d2",
+                            ConcurrencyStamp = "024de541-a5ed-4eaf-9e17-5de0ef99cfa7",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

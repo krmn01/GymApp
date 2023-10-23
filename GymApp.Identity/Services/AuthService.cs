@@ -89,6 +89,7 @@ namespace GymApp.Identity.Services
                 Email = request.Email,
                 EmailConfirmed = true,
                 PhoneNumber = request.PhoneNumber,
+                ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001")
             };
 
             if (user.PhoneNumber != null && user.PhoneNumber != string.Empty) user.PhoneNumberConfirmed = true; 

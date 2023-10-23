@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace GymApp.Application.Features.ApplicationUser.Commands.UpdateUser
 {
-    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Unit>
+    public class UpdatePictureCommandHandler : IRequestHandler<UpdatePictureCommand, Unit>
     {
         //private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        public Task<Unit> Handle(UpdatePictureCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

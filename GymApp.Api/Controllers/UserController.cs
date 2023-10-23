@@ -1,9 +1,13 @@
-﻿using GymApp.Application.Interfaces.Identity;
+﻿using GymApp.Application.Features.ApplicationUser.Commands.UpdateUser;
+using GymApp.Application.Features.ProfilePicture;
+using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Models.Identity;
 using GymApp.Domain.Common;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 
 namespace GymApp.Api.Controllers
 {
@@ -13,11 +17,13 @@ namespace GymApp.Api.Controllers
     {
         private readonly IJwtHelper _jwtHelper;
         private readonly IUserService _userService;
+        private readonly IMediator _mediator;
 
-        public UserController(IJwtHelper jwtHelper, IUserService userService)
+        public UserController(IJwtHelper jwtHelper, IUserService userService, IMediator mediator)
         {
             _jwtHelper = jwtHelper;
             _userService = userService;
+            _mediator = mediator;
         }
 
         [HttpGet("profile")]
@@ -34,6 +40,15 @@ namespace GymApp.Api.Controllers
         {
             var id = _jwtHelper.GetIdFromToken(token);
             return await _userService.UpdatePasswordAsync(id,request);
+        }
+
+        [HttpPut("change-picture")]
+        [Authorize]
+        public async Task<Response<string>> ChangePicture([FromHeader(Name = "Authorization")] string token, string picture)
+        {
+            var id = _jwtHelper.GetIdFromToken(token);
+            var tmp = Encoding.UTF8.GetBytes(picture);
+            return await _userService.UpdateProfilePicture(id,tmp);
         }
 
     }

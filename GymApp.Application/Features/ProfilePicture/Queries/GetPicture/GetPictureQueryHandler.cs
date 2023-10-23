@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using GymApp.Application.Exceptions;
-using GymApp.Application.Features.ApplicationUser.Queries.GetUsersData;
 using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;

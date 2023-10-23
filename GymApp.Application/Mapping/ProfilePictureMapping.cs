@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using GymApp.Application.Features.ApplicationUser.Queries.GetUsersData;
 using GymApp.Application.Features.ProfilePicture;
 using GymApp.Domain.Entities;
 using System;

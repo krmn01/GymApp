@@ -1,5 +1,4 @@
-﻿using GymApp.Application.Features.ApplicationUser.Commands.UpdateUser;
-using GymApp.Application.Features.ProfilePicture;
+﻿using GymApp.Application.Features.ProfilePicture;
 using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Models.Identity;
 using GymApp.Domain.Common;
@@ -44,7 +43,7 @@ namespace GymApp.Api.Controllers
 
         [HttpPut("change-picture")]
         [Authorize]
-        public async Task<Response<string>> ChangePicture([FromHeader(Name = "Authorization")] string token, string picture)
+        public async Task<Response<string>> ChangePicture([FromHeader(Name = "Authorization")] string token, [FromBody]string picture)
         {
             var id = _jwtHelper.GetIdFromToken(token);
             var tmp = Encoding.UTF8.GetBytes(picture);

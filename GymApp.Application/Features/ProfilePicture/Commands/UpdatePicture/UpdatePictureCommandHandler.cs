@@ -22,6 +22,7 @@ namespace GymApp.Application.Features.ProfilePicture.Commands.UpdatePicture
         public async Task<Guid> Handle(UpdatePictureCommand request, CancellationToken cancellationToken)
         {
             var updatedPicture = await _profilePictureRepository.GetByIdAsync(request.Id);
+            updatedPicture.Picture = request.Content;
             if (updatedPicture.Id == Guid.Parse("00000000-0000-0000-0000-000000000001"))
             {
                 updatedPicture.Id = new Guid();

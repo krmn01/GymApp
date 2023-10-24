@@ -46,8 +46,7 @@ namespace GymApp.Api.Controllers
         public async Task<Response<string>> ChangePicture([FromHeader(Name = "Authorization")] string token, [FromBody]string picture)
         {
             var id = _jwtHelper.GetIdFromToken(token);
-            var tmp = Encoding.UTF8.GetBytes(picture);
-            return await _userService.UpdateProfilePicture(id,tmp);
+            return await _userService.UpdateProfilePicture(id, Convert.FromBase64String(picture));
         }
 
         [HttpDelete("delete-account")]

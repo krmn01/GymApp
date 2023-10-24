@@ -14,5 +14,7 @@ namespace GymApp.Application.Interfaces.Identity
         Task<GetUserResponse> GetUserById(string id);
         Task<Response<string>> UpdatePasswordAsync(string id, UpdatePasswordRequest request);
         Task<Response<string>> UpdateProfilePicture(string id, byte[] picture);
+
+        Task<Response<string>> DeleteUser(string id, string password);
     }
 }

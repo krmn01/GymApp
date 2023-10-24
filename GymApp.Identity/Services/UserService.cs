@@ -28,6 +28,7 @@ namespace GymApp.Identity.Services
             _signInManager = signInManager;
             _mediator = mediator;
         }
+
         public async Task<List<User>> GetAllUsersAsync()
         {
             var users = await _userManager.GetUsersInRoleAsync("User");
@@ -118,5 +119,25 @@ namespace GymApp.Identity.Services
                 Data = null
             };
         }
+
+        public async Task<Response<string>> DeleteUser(string id, string password)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) throw new BadRequestException("User does not exist", new FluentValidation.Results.ValidationResult());
+            var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
+
+            if (!result.Succeeded) throw new BadRequestException("Incorrect password", new FluentValidation.Results.ValidationResult());
+            await _userManager.DeleteAsync(user);
+
+            return new Response<string>
+            {
+                StatusCode = 200,
+                Succeeded = true,
+                Errors = null,
+                Message = "Account deleted",
+                Data = null
+            };
+        }
+
     }
 }

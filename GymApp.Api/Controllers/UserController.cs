@@ -50,5 +50,13 @@ namespace GymApp.Api.Controllers
             return await _userService.UpdateProfilePicture(id,tmp);
         }
 
+        [HttpDelete("delete-account")]
+        [Authorize]
+        public async Task<Response<string>> DeleteUser([FromHeader(Name = "Authorization")] string token, [FromBody] string password)
+        {
+            var id = _jwtHelper.GetIdFromToken(token);
+            return await _userService.DeleteUser(id, password);
+        }
+
     }
 }

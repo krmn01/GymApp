@@ -26,7 +26,7 @@ namespace GymApp.Identity.Configuration
                     NormalizedUserName = "ADMINISTRATOR",
                     PasswordHash = hash.HashPassword(null, "Password1!"),
                     EmailConfirmed = true,
-                    ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001")
+                    UserProfileId = Guid.Parse("00000000-0000-0000-0000-000000000001")
                 },
                  new ApplicationUser
                  {
@@ -38,7 +38,7 @@ namespace GymApp.Identity.Configuration
                      NormalizedUserName = "TESTUSER",
                      PasswordHash = hash.HashPassword(null, "Password1!"),
                      EmailConfirmed = true,
-                     ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001")
+                     UserProfileId = Guid.Parse("00000000-0000-0000-0000-000000000002")
                  }
 
             );

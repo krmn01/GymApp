@@ -57,5 +57,13 @@ namespace GymApp.Api.Controllers
             return await _userService.DeleteUser(id, password);
         }
 
+        [HttpPut("change-profile-data")]
+        [Authorize]
+        public async Task<Response<string>> ChangeProfileData([FromHeader(Name = "Authorization")] string token, [FromBody] ChangeUsersDataRequest request)
+        {
+            var id = _jwtHelper.GetIdFromToken(token);
+            return await _userService.ChangeUsersData(id, request);
+        }
+
     }
 }

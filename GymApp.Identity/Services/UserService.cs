@@ -5,6 +5,7 @@ using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Application.Models.Identity;
 using GymApp.Domain.Common;
+using GymApp.Domain.Entities;
 using GymApp.Identity.Models;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -21,12 +22,14 @@ namespace GymApp.Identity.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IMediator _mediator;
-
-        public UserService(UserManager<ApplicationUser> userManager,  SignInManager<ApplicationUser> signInManager, IMediator mediator)
+        private readonly IUsersProfileRepository _usersProfileRepository;
+        public UserService(UserManager<ApplicationUser> userManager,  SignInManager<ApplicationUser> signInManager, IMediator mediator, IUsersProfileRepository usersProfileRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _mediator = mediator;
+            _usersProfileRepository = usersProfileRepository;
+
         }
 
         public async Task<List<User>> GetAllUsersAsync()
@@ -47,9 +50,12 @@ namespace GymApp.Identity.Services
         {
             var user = await _userManager.FindByIdAsync(id);
             if (user == null) throw new NotFoundException(id, typeof(User).ToString());
+            var profile = await _usersProfileRepository.GetByIdAsync(user.UserProfileId);
+            if (profile == null) throw new NotFoundException(user.UserProfileId, typeof(UsersProfile).ToString());
+
             var picture = await _mediator.Send(new GetPictureQuery
             {
-                Id = user.ProfilePictureId
+                Id = profile.ProfilePictureId
             });
 
             var applicationUser = new User
@@ -100,14 +106,17 @@ namespace GymApp.Identity.Services
         {
             var user = await _userManager.FindByIdAsync(id);
             if(picture == null) throw new BadRequestException("Invalid picture", new FluentValidation.Results.ValidationResult());
+            var profile = await _usersProfileRepository.GetByIdAsync(user.UserProfileId);
+            if (profile == null) throw new NotFoundException(user.UserProfileId, typeof(UsersProfile).ToString());
+
             var request = new UpdatePictureCommand
             {
-                Id = user.ProfilePictureId,
+                Id = profile.ProfilePictureId,
                 Content = picture
             };
 
             var result = await _mediator.Send(request);
-            user.ProfilePictureId = result;
+            profile.ProfilePictureId = result;
             await _userManager.UpdateAsync(user);
 
             return new Response<string>
@@ -135,6 +144,29 @@ namespace GymApp.Identity.Services
                 Succeeded = true,
                 Errors = null,
                 Message = "Account deleted",
+                Data = null
+            };
+        }
+
+        public async Task<Response<string>> ChangeUsersData(string id, ChangeUsersDataRequest request)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) throw new BadRequestException("User does not exist", new FluentValidation.Results.ValidationResult());
+
+            user.Email = request.Email != "" ? request.Email : user.Email;
+            user.PhoneNumber = request.PhoneNumber != "" ? request.PhoneNumber : user.PhoneNumber;
+            user.FullName = request.FullName != "" ? request.FullName : user.FullName;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (!result.Succeeded) throw new BadRequestException("New data is invalid", new FluentValidation.Results.ValidationResult());
+
+            return new Response<string>
+            {
+                StatusCode = 200,
+                Succeeded = true,
+                Errors = null,
+                Message = "Account updated",
                 Data = null
             };
         }

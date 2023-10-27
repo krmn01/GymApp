@@ -1,7 +1,9 @@
 ﻿using FluentValidation.Validators;
 using GymApp.Application.Exceptions;
 using GymApp.Application.Interfaces.Identity;
+using GymApp.Application.Interfaces.Persistence;
 using GymApp.Application.Models.Identity;
+using GymApp.Domain.Entities;
 using GymApp.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -20,13 +22,15 @@ namespace GymApp.Identity.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IUsersProfileRepository _usersProfileRepository;
         private readonly JwtSettings _jwtSettings;
 
-        public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings)
+        public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings, IUsersProfileRepository usersProfileRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _jwtSettings = jwtSettings.Value;
+            _usersProfileRepository = usersProfileRepository;
         }
 
         public async Task<AuthResponse> Login(AuthRequest request)
@@ -82,6 +86,7 @@ namespace GymApp.Identity.Services
          public async Task<RegistrationResponse> Register(RegistrationRequest request)
         {
             if (!request.Password.Equals(request.ConfirmPassword)) throw new BadRequestException("Passwords are not the same", new FluentValidation.Results.ValidationResult());
+            
             var user = new ApplicationUser
             {
                 UserName = request.UserName,
@@ -89,10 +94,21 @@ namespace GymApp.Identity.Services
                 Email = request.Email,
                 EmailConfirmed = true,
                 PhoneNumber = request.PhoneNumber,
-                ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001")
             };
 
-            if (user.PhoneNumber != null && user.PhoneNumber != string.Empty) user.PhoneNumberConfirmed = true; 
+            if (user.PhoneNumber != null && user.PhoneNumber != string.Empty) user.PhoneNumberConfirmed = true;
+
+            var newProfile = new UsersProfile
+            {
+                Id = new Guid(),
+                UsersId = user.Id,
+                ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
+                TrainingGoals = new List<TrainingGoal>(),
+                Classes = new List<Class>(),
+                ProfileDescription = string.Empty
+            };
+
+            user.UserProfileId = newProfile.Id;
 
             var result = await _userManager.CreateAsync(user, request.Password);
             if (result.Succeeded)

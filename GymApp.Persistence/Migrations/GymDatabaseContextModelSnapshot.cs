@@ -22,6 +22,21 @@ namespace GymApp.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("ClassUsersProfile", b =>
+                {
+                    b.Property<Guid>("ClassesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UsersId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ClassesId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("ClassUsersProfile");
+                });
+
             modelBuilder.Entity("GymApp.Domain.Entities.Class", b =>
                 {
                     b.Property<Guid>("Id")
@@ -113,6 +128,94 @@ namespace GymApp.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("GymApp.Domain.Entities.TrainingGoal", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Finished")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("UsersProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsersProfileId");
+
+                    b.ToTable("TrainingGoals");
+                });
+
+            modelBuilder.Entity("GymApp.Domain.Entities.UsersProfile", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProfileDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ProfilePictureId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UsersId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UsersProfiles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("00000000-0000-0000-0000-000000000001"),
+                            ProfileDescription = "",
+                            ProfilePictureId = new Guid("00000000-0000-0000-0000-000000000001"),
+                            UsersId = "753caff9-598a-42d9-aa00-bfa3be83096a"
+                        },
+                        new
+                        {
+                            Id = new Guid("00000000-0000-0000-0000-000000000002"),
+                            ProfileDescription = "",
+                            ProfilePictureId = new Guid("00000000-0000-0000-0000-000000000001"),
+                            UsersId = "4a60b6be-42d4-4676-86ef-bbfe129011da"
+                        });
+                });
+
+            modelBuilder.Entity("ClassUsersProfile", b =>
+                {
+                    b.HasOne("GymApp.Domain.Entities.Class", null)
+                        .WithMany()
+                        .HasForeignKey("ClassesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GymApp.Domain.Entities.UsersProfile", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("GymApp.Domain.Entities.Class", b =>
                 {
                     b.HasOne("GymApp.Domain.Entities.PersonalTrainer", "PersonalTrainer")
@@ -122,6 +225,18 @@ namespace GymApp.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("PersonalTrainer");
+                });
+
+            modelBuilder.Entity("GymApp.Domain.Entities.TrainingGoal", b =>
+                {
+                    b.HasOne("GymApp.Domain.Entities.UsersProfile", null)
+                        .WithMany("TrainingGoals")
+                        .HasForeignKey("UsersProfileId");
+                });
+
+            modelBuilder.Entity("GymApp.Domain.Entities.UsersProfile", b =>
+                {
+                    b.Navigation("TrainingGoals");
                 });
 #pragma warning restore 612, 618
         }

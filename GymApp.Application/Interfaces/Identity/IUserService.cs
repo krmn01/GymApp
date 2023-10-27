@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Models.Identity;
 using GymApp.Domain.Common;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace GymApp.Application.Interfaces.Identity
         Task<Response<string>> UpdateProfilePicture(string id, byte[] picture);
 
         Task<Response<string>> DeleteUser(string id, string password);
+
+        Task<Response<string>> ChangeUsersData(string id, ChangeUsersDataRequest request);
     }
 }

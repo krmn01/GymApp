@@ -1,6 +1,7 @@
 ﻿using GymApp.Application.Exceptions;
 using GymApp.Application.Features.ProfilePicture.Commands.UpdatePicture;
 using GymApp.Application.Features.ProfilePicture.Queries.GetPicture;
+using GymApp.Application.Features.UsersProfile;
 using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Application.Models.Identity;
@@ -72,7 +73,7 @@ namespace GymApp.Identity.Services
                 Succeeded = true,
                 Data = new ProfileDTO{
                     User = applicationUser,
-                    ProfilePictureDTO = picture
+                    ProfilePicture = picture
                 },
                 StatusCode = 200,
             };
@@ -117,7 +118,7 @@ namespace GymApp.Identity.Services
 
             var result = await _mediator.Send(request);
             profile.ProfilePictureId = result;
-            await _userManager.UpdateAsync(user);
+            await _usersProfileRepository.UpdateAsync(profile);
 
             return new Response<string>
             {

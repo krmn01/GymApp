@@ -20,4 +20,8 @@
     <ProjectReference Include="..\GymApp.Domain\GymApp.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\UsersProfile\Queries\" />
+  </ItemGroup>
+
 </Project>

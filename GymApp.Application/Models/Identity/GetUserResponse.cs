@@ -1,4 +1,5 @@
 ﻿using GymApp.Application.Features.ProfilePicture;
+using GymApp.Application.Features.UsersProfile;
 using GymApp.Domain.Common;
 using GymApp.Domain.Entities;
 using System;

@@ -1,10 +1,12 @@
 ﻿using FluentValidation.Validators;
 using GymApp.Application.Exceptions;
+using GymApp.Application.Features.UsersProfile.Commands.CreateUsersProfile;
 using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Application.Models.Identity;
 using GymApp.Domain.Entities;
 using GymApp.Identity.Models;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -22,15 +24,15 @@ namespace GymApp.Identity.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly IUsersProfileRepository _usersProfileRepository;
         private readonly JwtSettings _jwtSettings;
+        private readonly IMediator _mediator;
 
-        public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings, IUsersProfileRepository usersProfileRepository)
+        public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings, IMediator mediator)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _jwtSettings = jwtSettings.Value;
-            _usersProfileRepository = usersProfileRepository;
+            _mediator = mediator;
         }
 
         public async Task<AuthResponse> Login(AuthRequest request)
@@ -98,17 +100,17 @@ namespace GymApp.Identity.Services
 
             if (user.PhoneNumber != null && user.PhoneNumber != string.Empty) user.PhoneNumberConfirmed = true;
 
-            var newProfile = new UsersProfile
+
+            var newProfileCommand = new CreateUsersProfileCommand
             {
-                Id = new Guid(),
-                UsersId = user.Id,
-                ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
-                TrainingGoals = new List<TrainingGoal>(),
-                Classes = new List<Class>(),
-                ProfileDescription = string.Empty
+                UserId = user.Id,
+                ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001")
             };
 
-            user.UserProfileId = newProfile.Id;
+            var newProfileId= await _mediator.Send(newProfileCommand);
+
+            user.UserProfileId = newProfileId;
+           
 
             var result = await _userManager.CreateAsync(user, request.Password);
             if (result.Succeeded)

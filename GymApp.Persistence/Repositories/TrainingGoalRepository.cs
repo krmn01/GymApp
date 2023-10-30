@@ -1,6 +1,7 @@
 ﻿using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Entities;
 using GymApp.Persistence.DatabaseContext;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,11 @@ namespace GymApp.Persistence.Repositories
     {
         public TrainingGoalRepository(GymDatabaseContext context) : base(context)
         {
+        }
+
+        public async Task<List<TrainingGoal>> GetTrainingGoalsByProfileId(Guid ProfileId)
+        {
+            return await _context.Set<TrainingGoal>().Where(x => x.Profile.Id == ProfileId).AsNoTracking().ToListAsync();
         }
     }
 }

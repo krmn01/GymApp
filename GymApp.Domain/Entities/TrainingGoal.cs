@@ -12,6 +12,7 @@ namespace GymApp.Domain.Entities
         public string Content { get; set; }
         public bool Finished { get; set; }
 
+        public UsersProfile Profile { get; set; }
 
     }
 }

@@ -51,8 +51,17 @@ namespace GymApp.Persistence.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MaxUsers")
+                        .HasColumnType("int");
+
                     b.Property<Guid>("PersonalTrainerId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
@@ -62,6 +71,17 @@ namespace GymApp.Persistence.Migrations
                     b.HasIndex("PersonalTrainerId");
 
                     b.ToTable("Classes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("00000000-0000-0000-0000-000000000001"),
+                            ClassName = "Żelazne barki",
+                            EndTime = new DateTime(2023, 6, 15, 22, 0, 0, 0, DateTimeKind.Unspecified),
+                            MaxUsers = 20,
+                            PersonalTrainerId = new Guid("00000000-2199-8437-0000-000000000001"),
+                            StartTime = new DateTime(2023, 6, 15, 21, 15, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("GymApp.Domain.Entities.PersonalTrainer", b =>
@@ -98,6 +118,16 @@ namespace GymApp.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PersonalTrainers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("00000000-2199-8437-0000-000000000001"),
+                            Email = "l.karasek@gmail.com",
+                            Name = "Łukasz",
+                            PhoneNumber = "533222111",
+                            Surname = "Karasek"
+                        });
                 });
 
             modelBuilder.Entity("GymApp.Domain.Entities.ProfilePicture", b =>
@@ -144,15 +174,15 @@ namespace GymApp.Persistence.Migrations
                     b.Property<bool>("Finished")
                         .HasColumnType("bit");
 
+                    b.Property<Guid>("ProfileId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("UsersProfileId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UsersProfileId");
+                    b.HasIndex("ProfileId");
 
                     b.ToTable("TrainingGoals");
                 });
@@ -219,7 +249,7 @@ namespace GymApp.Persistence.Migrations
             modelBuilder.Entity("GymApp.Domain.Entities.Class", b =>
                 {
                     b.HasOne("GymApp.Domain.Entities.PersonalTrainer", "PersonalTrainer")
-                        .WithMany()
+                        .WithMany("Classes")
                         .HasForeignKey("PersonalTrainerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -229,9 +259,18 @@ namespace GymApp.Persistence.Migrations
 
             modelBuilder.Entity("GymApp.Domain.Entities.TrainingGoal", b =>
                 {
-                    b.HasOne("GymApp.Domain.Entities.UsersProfile", null)
+                    b.HasOne("GymApp.Domain.Entities.UsersProfile", "Profile")
                         .WithMany("TrainingGoals")
-                        .HasForeignKey("UsersProfileId");
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("GymApp.Domain.Entities.PersonalTrainer", b =>
+                {
+                    b.Navigation("Classes");
                 });
 
             modelBuilder.Entity("GymApp.Domain.Entities.UsersProfile", b =>

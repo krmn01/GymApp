@@ -9,5 +9,6 @@ namespace GymApp.Application.Interfaces.Persistence
 {
     public interface ITrainingGoalsRepository :IGenericRepository<TrainingGoal>
     {
+        Task<List<TrainingGoal>> GetTrainingGoalsByProfileId(Guid ProfileId);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using GymApp.Application.Interfaces.Persistence;
 using GymApp.Persistence.DatabaseContext;
 using GymApp.Persistence.Repositories;
+using GymApp.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,7 +28,7 @@ namespace GymApp.Persistence
             services.AddScoped<IProfilePictureRepository, ProfilePictureRepository>();
             services.AddScoped<IUsersProfileRepository, UsersProfileRepository>();
             services.AddScoped<ITrainingGoalsRepository, TrainingGoalRepository>();
-
+            services.AddScoped<ITrainingGoalService, TrainingGoalService>();
             return services;
         }
     }

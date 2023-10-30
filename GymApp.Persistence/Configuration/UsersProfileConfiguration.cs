@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,6 +34,14 @@ namespace GymApp.Persistence.Configuration
                     UsersId = "4a60b6be-42d4-4676-86ef-bbfe129011da"
                 }
             );
+
+            builder.HasMany(a => a.TrainingGoals)
+                   .WithOne(b => b.Profile);
+
+            builder.HasMany(a => a.Classes)
+                   .WithMany(b => b.Users);
+
         }
+
     }
 }

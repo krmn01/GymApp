@@ -11,5 +11,6 @@ namespace GymApp.Application.Interfaces.Persistence
     public interface ITrainingGoalService
     {
         Task<Response<List<TrainingGoalDTO>>> GetTrainingGoalsById(Guid id);
+        Task<Response<string>> AddTrainingGoal(Guid id, string content);
     }
 }

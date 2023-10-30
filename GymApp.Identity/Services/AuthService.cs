@@ -68,6 +68,7 @@ namespace GymApp.Identity.Services
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim("uId", user.Id),
+                new Claim("pId",user.UserProfileId.ToString())
             }
             .Union(claims)
             .Union(claimRole);

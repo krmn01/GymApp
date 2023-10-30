@@ -19,5 +19,14 @@ namespace GymApp.Identity.Helpers
             if (id == null) throw new Exception("Token is not valid");
             return id.ToString().Substring(5);
         }
+
+        public Guid GetProfileIdFromToken(string token)
+        {
+            var jwtEncodedString = token.Substring(7);
+            var newToken = new JwtSecurityToken(jwtEncodedString);
+            var id = newToken.Claims.FirstOrDefault(claim => claim.Type == "pId");
+            if (id == null) throw new Exception("Token is not valid");
+            return Guid.Parse(id.ToString().Substring(5));
+        }
     }
 }

@@ -14,7 +14,8 @@ namespace GymApp.Persistence.Configuration
         public void Configure(EntityTypeBuilder<TrainingGoal> builder)
         {
             builder.HasOne(a => a.Profile)
-                   .WithMany(b => b.TrainingGoals);
+                   .WithMany(b => b.TrainingGoals)
+                   .HasForeignKey(b => b.ProfileId);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GymApp.Application.Features.TrainingGoal;
+using GymApp.Application.Features.TrainingGoal.Commands.AddTrainingGoal;
 using GymApp.Application.Features.TrainingGoal.GetAllTrainingGoals;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
@@ -19,8 +20,30 @@ namespace GymApp.Persistence.Services
         {
             _mediator = mediator;
         }
-        public async Task<Response<List<TrainingGoalDTO>>> GetTrainingGoalsById(Guid id)
+
+        public async Task<Response<string>> AddTrainingGoal(Guid id, string content)
         {
+            var request = new AddTrainingGoalCommand
+            {
+                ProfileId = id,
+                TrainingGoalDTO = new TrainingGoalDTO
+                {
+                    Content = content
+                }
+            };
+            var response = await _mediator.Send(request);
+
+            return new Response<string>
+            {
+                Succeeded = true,
+                StatusCode = 200,
+                Data = response.ToString(),
+                Errors = null
+            };
+        }
+
+        public async Task<Response<List<TrainingGoalDTO>>> GetTrainingGoalsById(Guid id)
+        { 
             var request = new GetAllTrainingGoalsQuery { ProfileId = id };
             var response = await _mediator.Send(request);
             return new Response<List<TrainingGoalDTO>>

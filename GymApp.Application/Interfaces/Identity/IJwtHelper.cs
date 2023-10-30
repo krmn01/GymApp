@@ -9,5 +9,6 @@ namespace GymApp.Application.Interfaces.Identity
     public interface IJwtHelper
     {
         string GetIdFromToken(string token);
+        Guid GetProfileIdFromToken(string token);
     }
 }

@@ -24,6 +24,7 @@ namespace GymApp.Persistence.Configuration
                   Surname = "Karasek",
                   PhoneNumber = "533222111",
                   Email = "l.karasek@gmail.com",
+                  Classes = new List<Class>()
               }
             );
         }

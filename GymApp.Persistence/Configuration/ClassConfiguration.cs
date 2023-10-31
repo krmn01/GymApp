@@ -29,6 +29,7 @@ namespace GymApp.Persistence.Configuration
                       PersonalTrainerId = Guid.Parse("00000000-2199-8437-0000-000000000001"),
                       StartTime = new DateTime(2023, 6, 15, 21, 15, 00),
                       EndTime = new DateTime(2023, 6, 15, 22, 00, 00),
+                      DayOfWeek = Domain.Enums.DaysOfWeek.monday,
                       MaxUsers = 20
                   }
             );

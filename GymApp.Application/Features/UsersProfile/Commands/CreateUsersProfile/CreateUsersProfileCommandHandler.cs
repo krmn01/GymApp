@@ -27,7 +27,7 @@ namespace GymApp.Application.Features.UsersProfile.Commands.CreateUsersProfile
                 Id = new Guid(),
                 UsersId = request.UserId,
                 TrainingGoals = new List<Domain.Entities.TrainingGoal>(),
-                Classes = new List<Class>(),
+                Classes = new List<Domain.Entities.Class>(),
                 ProfilePictureId = request.ProfilePictureId,
                 ProfileDescription = string.Empty
             };

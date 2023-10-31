@@ -1,4 +1,5 @@
 ﻿using GymApp.Domain.Common;
+using GymApp.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -22,6 +23,7 @@ namespace GymApp.Domain.Entities
         public int MaxUsers { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        public DaysOfWeek DayOfWeek { get; set; }
 
     }
 }

@@ -51,6 +51,9 @@ namespace GymApp.Persistence.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DayOfWeek")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
@@ -77,6 +80,7 @@ namespace GymApp.Persistence.Migrations
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
                             ClassName = "Żelazne barki",
+                            DayOfWeek = 0,
                             EndTime = new DateTime(2023, 6, 15, 22, 0, 0, 0, DateTimeKind.Unspecified),
                             MaxUsers = 20,
                             PersonalTrainerId = new Guid("00000000-2199-8437-0000-000000000001"),

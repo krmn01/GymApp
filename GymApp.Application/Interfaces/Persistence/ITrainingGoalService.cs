@@ -13,5 +13,6 @@ namespace GymApp.Application.Interfaces.Persistence
         Task<Response<List<TrainingGoalDTO>>> GetTrainingGoalsById(Guid id);
         Task<Response<string>> AddTrainingGoal(Guid id, string content);
         Task<Response<string>> ToggleTrainingGoal(Guid goalId, Guid profileId);
+        Task<Response<string>> DeleteTrainingGoal(Guid goalId, Guid profileId);
     }
 }

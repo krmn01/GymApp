@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Features.TrainingGoal;
 using GymApp.Application.Features.TrainingGoal.Commands.AddTrainingGoal;
+using GymApp.Application.Features.TrainingGoal.Commands.DeleteTrainingGoal;
 using GymApp.Application.Features.TrainingGoal.Commands.ToggleTrainingGoal;
 using GymApp.Application.Features.TrainingGoal.GetAllTrainingGoals;
 using GymApp.Application.Interfaces.Persistence;
@@ -42,7 +43,6 @@ namespace GymApp.Persistence.Services
                 Errors = null
             };
         }
-
         public async Task<Response<List<TrainingGoalDTO>>> GetTrainingGoalsById(Guid id)
         { 
             var request = new GetAllTrainingGoalsQuery { ProfileId = id };
@@ -69,5 +69,20 @@ namespace GymApp.Persistence.Services
                 Data = string.Empty
             };
         }
+
+        public async Task<Response<string>> DeleteTrainingGoal(Guid goalId, Guid profileId)
+        {
+            var request = new DeleteTrainingGoalCommand { ProfileId = profileId, TrainingGoalId = goalId };
+            await _mediator.Send(request);
+            return new Response<string>
+            {
+                StatusCode = 200,
+                Succeeded = true,
+                Errors = null,
+                Message = "Training goal deleted succesfully",
+                Data = string.Empty
+            };
+        }
+
     }
 }

@@ -42,5 +42,12 @@ namespace GymApp.Api.Controllers
             return await _goalService.ToggleTrainingGoal(Guid.Parse(id), _jwtHelper.GetProfileIdFromToken(token));
         }
 
+        [HttpDelete("{id}/delete")]
+        [Authorize]
+        public async Task<Response<string>> DeleteTrainingGoal([FromHeader(Name = "Authorization")] string token, string id)
+        {
+            return await _goalService.DeleteTrainingGoal(Guid.Parse(id), _jwtHelper.GetProfileIdFromToken(token));
+        }
+
     }
 }

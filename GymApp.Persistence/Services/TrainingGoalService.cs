@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Features.TrainingGoal;
 using GymApp.Application.Features.TrainingGoal.Commands.AddTrainingGoal;
+using GymApp.Application.Features.TrainingGoal.Commands.ToggleTrainingGoal;
 using GymApp.Application.Features.TrainingGoal.GetAllTrainingGoals;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
@@ -54,5 +55,19 @@ namespace GymApp.Persistence.Services
                 Data = response
             };
          }
+
+        public async Task<Response<string>> ToggleTrainingGoal(Guid goalId,Guid profileId)
+        {
+            var request = new ToggleTrainingGoalCommand { ProfileId = profileId, TrainingGoalId = goalId };
+            await _mediator.Send(request);
+            return new Response<string>
+            {
+                StatusCode = 200,
+                Succeeded = true,
+                Errors = null,
+                Message = "Training goal toggled succesfully",
+                Data = string.Empty
+            };
+        }
     }
 }

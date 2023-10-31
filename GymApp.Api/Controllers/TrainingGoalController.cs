@@ -34,5 +34,13 @@ namespace GymApp.Api.Controllers
         {
             return await _goalService.AddTrainingGoal(_jwtHelper.GetProfileIdFromToken(token),content);
         }
+
+        [HttpPut("{id}/toggle")]
+        [Authorize]
+        public async Task<Response<string>> ToggleTrainingGoal([FromHeader(Name = "Authorization")] string token, string id)
+        {
+            return await _goalService.ToggleTrainingGoal(Guid.Parse(id), _jwtHelper.GetProfileIdFromToken(token));
+        }
+
     }
 }

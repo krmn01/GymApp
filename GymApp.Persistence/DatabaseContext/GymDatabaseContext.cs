@@ -18,6 +18,8 @@ namespace GymApp.Persistence.DatabaseContext
         public DbSet<ProfilePicture> ProfilePictures { get; set; }
         public DbSet<UsersProfile> UsersProfiles { get; set; }
         public DbSet<TrainingGoal> TrainingGoals { get; set; }
+        public DbSet<GymPass> GymPasses { get; set; }
+        public DbSet<GymEntry> GymEntries { get; set; }
 
 
         public GymDatabaseContext(DbContextOptions<GymDatabaseContext> options) :base(options) 

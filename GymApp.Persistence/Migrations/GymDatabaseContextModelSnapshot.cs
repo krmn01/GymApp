@@ -138,6 +138,66 @@ namespace GymApp.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("GymApp.Domain.Entities.GymEntry", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EnteredOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ExitedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("GymPassId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GymPassId");
+
+                    b.ToTable("GymEntries");
+                });
+
+            modelBuilder.Entity("GymApp.Domain.Entities.GymPass", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PassType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("StartedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ValidTill")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("GymPasses");
+                });
+
             modelBuilder.Entity("GymApp.Domain.Entities.PersonalTrainer", b =>
                 {
                     b.Property<Guid>("Id")
@@ -327,6 +387,28 @@ namespace GymApp.Persistence.Migrations
                     b.Navigation("PersonalTrainer");
                 });
 
+            modelBuilder.Entity("GymApp.Domain.Entities.GymEntry", b =>
+                {
+                    b.HasOne("GymApp.Domain.Entities.GymPass", "Pass")
+                        .WithMany()
+                        .HasForeignKey("GymPassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pass");
+                });
+
+            modelBuilder.Entity("GymApp.Domain.Entities.GymPass", b =>
+                {
+                    b.HasOne("GymApp.Domain.Entities.UsersProfile", "User")
+                        .WithOne("Pass")
+                        .HasForeignKey("GymApp.Domain.Entities.GymPass", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GymApp.Domain.Entities.TrainingGoal", b =>
                 {
                     b.HasOne("GymApp.Domain.Entities.UsersProfile", "Profile")
@@ -345,6 +427,9 @@ namespace GymApp.Persistence.Migrations
 
             modelBuilder.Entity("GymApp.Domain.Entities.UsersProfile", b =>
                 {
+                    b.Navigation("Pass")
+                        .IsRequired();
+
                     b.Navigation("TrainingGoals");
                 });
 #pragma warning restore 612, 618

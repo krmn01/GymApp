@@ -30,6 +30,8 @@ namespace GymApp.Persistence
             services.AddScoped<ITrainingGoalsRepository, TrainingGoalRepository>();
             services.AddScoped<ITrainingGoalService, TrainingGoalService>();
             services.AddScoped<IPersonalTrainerService, PersonalTrainerService>();
+            services.AddScoped<IGymPassRepository, GymPassRepository>();
+            services.AddScoped<IGymEntryRepository, GymEntryRepository>();
             return services;
         }
     }

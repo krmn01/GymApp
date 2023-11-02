@@ -41,6 +41,9 @@ namespace GymApp.Persistence.Configuration
             builder.HasMany(a => a.Classes)
                    .WithMany(b => b.Users);
 
+            builder.HasOne(a => a.Pass)
+                   .WithOne(b => b.User);
+
         }
 
     }

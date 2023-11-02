@@ -14,5 +14,6 @@ namespace GymApp.Domain.Entities
         public IEnumerable<Class> Classes { get; set; }
         public Guid ProfilePictureId { get; set; }
         public string ProfileDescription { get; set; }
+        public GymPass Pass { get; set; }
     }
 }

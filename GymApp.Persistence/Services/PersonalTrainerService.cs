@@ -1,4 +1,5 @@
 ﻿using GymApp.Application.Features.PersonalTrainer;
+using GymApp.Application.Features.PersonalTrainer.Commands.CreateNewTrainer;
 using GymApp.Application.Features.PersonalTrainer.GetAllPersonalTrainers;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
@@ -30,6 +31,20 @@ namespace GymApp.Persistence.Services
                 StatusCode = 200,
                 Errors = null,
                 Data = response
+            };
+        }
+
+        public async Task<Response<string>> CreateNewTrainer(NewTrainerDTO newTrainer)
+        {
+            var request = new CreateNewTrainerCommand { NewTrainer = newTrainer };
+            var response = await _mediator.Send(request);
+            return new Response<string>
+            {
+                Succeeded = true,
+                StatusCode = 200,
+                Errors = null,
+                Message = "Trainer created",
+                Data = response.ToString()
             };
         }
 

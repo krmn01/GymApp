@@ -25,6 +25,24 @@ namespace GymApp.Persistence.Configuration
                   PhoneNumber = "533222111",
                   Email = "l.karasek@gmail.com",
                   Classes = new List<Class>()
+              },
+              new PersonalTrainer
+              {
+                  Id = Guid.Parse("12340008-2199-8437-0000-000000003331"),
+                  Name = "Mateusz",
+                  Surname = "Kołtuniuk",
+                  PhoneNumber = "666222111",
+                  Email = "m.koltuniuk@gmail.com",
+                  Classes = new List<Class>()
+              },
+              new PersonalTrainer
+              {
+                  Id = Guid.Parse("33300000-2137-8437-0000-045600000001"),
+                  Name = "Kamil",
+                  Surname = "Kończyński",
+                  PhoneNumber = "533444111",
+                  Email = "k.konczyński@gmail.com",
+                  Classes = new List<Class>()
               }
             );
         }

@@ -1,4 +1,5 @@
 ﻿using GymApp.Application.Features.PersonalTrainer;
+using GymApp.Application.Features.PersonalTrainer.Commands.CreateNewTrainer;
 using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
@@ -25,6 +26,13 @@ namespace GymApp.Api.Controllers
         public async Task<Response<List<PersonalTrainerDTO>>> GetAllTrainers([FromHeader(Name = "Authorization")] string token)
         {
             return await _trainerService.GetAllTrainers();
+        }
+
+        [HttpPost("create")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<Response<string>> CreateNewTrainer([FromBody] NewTrainerDTO newTrainer)
+        {
+            return await _trainerService.CreateNewTrainer(newTrainer);
         }
     }
 }

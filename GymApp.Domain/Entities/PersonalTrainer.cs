@@ -26,7 +26,7 @@ namespace GymApp.Domain.Entities
         [EmailAddress]
         public string Email { get; set; } = string.Empty;
 
-        public IEnumerable<Class> Classes {get; set;} 
+        public List<Class> Classes {get; set;} 
 
     }
 }

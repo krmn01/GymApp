@@ -10,13 +10,18 @@ namespace GymApp.Application.Mapping
 {
     public class ClassMapping :Profile
     {
+        
         public ClassMapping() 
         {
             CreateMap<ClassDTO, Domain.Entities.Class>()
                 .ForMember(dest => dest.StartTime, o => o.MapFrom(src => src.StartTime))
                 .ForMember(dest => dest.EndTime, o => o.MapFrom(src => src.EndTime))
-                .ForMember(dest => dest.DayOfWeek, o => o.MapFrom(src => src.DayOfWeek))
-                .ReverseMap();
+                .ForMember(dest => dest.DayOfWeek, o => o.MapFrom(src => src.DayOfWeek));
+
+            CreateMap<Domain.Entities.Class,ClassDTO>()
+                .ForMember(dest => dest.StartTime, o => o.MapFrom(src => src.StartTime.ToString("HH:mm")))
+                .ForMember(dest => dest.EndTime, o => o.MapFrom(src => src.EndTime.ToString("HH:mm")))
+                .ForMember(dest => dest.DayOfWeek, o => o.MapFrom(src => src.DayOfWeek));
 
         }
     }

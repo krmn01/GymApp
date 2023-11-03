@@ -15,7 +15,7 @@ namespace GymApp.Domain.Entities
         [Required]
         [StringLength(100)]
         public string ClassName { get; set; }
-        public IEnumerable<UsersProfile> Users { get; set; }
+        public List<UsersProfile> Users { get; set; }
 
         [ForeignKey("PersonalTrainerId")]
         public Guid PersonalTrainerId { get; set; }

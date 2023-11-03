@@ -54,6 +54,7 @@ namespace GymApp.Identity.Services
             var profile = await _usersProfileRepository.GetByIdAsync(user.UserProfileId);
             if (profile == null) throw new NotFoundException(user.UserProfileId, typeof(UsersProfile).ToString());
 
+
             var picture = await _mediator.Send(new GetPictureQuery
             {
                 Id = profile.ProfilePictureId
@@ -73,7 +74,7 @@ namespace GymApp.Identity.Services
                 Succeeded = true,
                 Data = new ProfileDTO{
                     User = applicationUser,
-                    ProfilePicture = picture
+                    ProfilePicture = picture,
                 },
                 StatusCode = 200,
             };

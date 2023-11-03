@@ -1,6 +1,7 @@
 ﻿using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Entities;
 using GymApp.Persistence.DatabaseContext;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace GymApp.Persistence.Repositories
         public UsersProfileRepository(GymDatabaseContext context) : base(context)
         {
         }
+
     }
 }

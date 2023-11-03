@@ -9,6 +9,6 @@ namespace GymApp.Application.Interfaces.Persistence
 {
     public interface IClassRepository :IGenericRepository<Class>
     {
-
+        Task<List<Class>> GetAllUsersClasses(Guid ProfileId);
     }
 }

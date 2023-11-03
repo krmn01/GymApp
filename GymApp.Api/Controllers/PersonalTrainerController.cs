@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Features.PersonalTrainer;
 using GymApp.Application.Features.PersonalTrainer.Commands.CreateNewTrainer;
+using GymApp.Application.Features.PersonalTrainer.Commands.UpdateTrainer;
 using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
@@ -33,6 +34,13 @@ namespace GymApp.Api.Controllers
         public async Task<Response<string>> CreateNewTrainer([FromBody] NewTrainerDTO newTrainer)
         {
             return await _trainerService.CreateNewTrainer(newTrainer);
+        }
+
+        [HttpPut("{id}/update")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<Response<string>> UpdateTrainerPersonalData(string id,[FromBody] UpdateTrainerDTO updatedTrainer)
+        {
+            return await _trainerService.UpdatePersonalTrainer(Guid.Parse(id), updatedTrainer);
         }
     }
 }

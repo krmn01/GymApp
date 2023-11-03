@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Features.PersonalTrainer;
 using GymApp.Application.Features.PersonalTrainer.Commands.CreateNewTrainer;
+using GymApp.Application.Features.PersonalTrainer.Commands.UpdateTrainer;
 using GymApp.Application.Features.PersonalTrainer.GetAllPersonalTrainers;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
@@ -51,6 +52,13 @@ namespace GymApp.Persistence.Services
         public Task<Response<PersonalTrainerDTO>> GetPersonalTrainerById(Guid id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<Response<string>> UpdatePersonalTrainer(Guid id,UpdateTrainerDTO updateTrainer)
+        {
+            var request = new UpdateTrainersDataCommand { TrainerGuid = id, UpdatedTrainer = updateTrainer };
+            var response = await _mediator.Send(request);
+            return new Response<string> { Succeeded = true, StatusCode = 200, Message ="Trainer updated", Errors = null, Data = null };
         }
     }
 }

@@ -11,6 +11,9 @@ namespace GymApp.Application.Interfaces.Persistence
     public interface IClassService
     {
         Task<Response<string>> AssignUserToClassAsync(Guid UserId, Guid ClassId);
+
+        Task<Response<string>> UnassignClassFromUserAsync(Guid UserId, Guid ClassId);
+
         Task<Response<List<ClassDTO>>> GetUsersClassesAsync(Guid ProfileId);
     }
 }

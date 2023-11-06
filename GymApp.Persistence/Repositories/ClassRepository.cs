@@ -28,5 +28,10 @@ namespace GymApp.Persistence.Repositories
 
             return usersClasses;
         }
+
+        public async override Task<Class> GetByIdAsync(Guid id)
+        {
+            return await _context.Set<Class>().Include(a=>a.Users).FirstAsync(a => a.Id == id);
+        }
     }
 }

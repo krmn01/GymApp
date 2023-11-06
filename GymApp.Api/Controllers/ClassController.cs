@@ -28,6 +28,13 @@ namespace GymApp.Api.Controllers
             return await _classService.AssignUserToClassAsync(_jwtHelper.GetProfileIdFromToken(token),Guid.Parse(id));
         }
 
+        [HttpPost("{id}/unassign-from-user")]
+        [Authorize]
+        public async Task<Response<string>> UnassignClassFromUser([FromHeader(Name = "Authorization")] string token, string id)
+        {
+            return await _classService.UnassignClassFromUserAsync(_jwtHelper.GetProfileIdFromToken(token), Guid.Parse(id));
+        }
+
         [HttpGet("users-classes")]
         [Authorize]
         public async Task<Response<List<ClassDTO>>> GetUsersClasses([FromHeader(Name = "Authorization")] string token)

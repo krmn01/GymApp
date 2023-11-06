@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Features.Class;
 using GymApp.Application.Features.Class.Commands;
+using GymApp.Application.Features.Class.Commands.UnassignClassFromUser;
 using GymApp.Application.Features.Class.Queries.GetUsersClasses;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace GymApp.Persistence.Services
 {
-    public class ClassService :IClassService
+    public class ClassService : IClassService
     {
         private readonly IMediator _mediator;
         public ClassService(IMediator mediator)
@@ -45,6 +46,19 @@ namespace GymApp.Persistence.Services
                 Succeeded = true,
                 Errors = null,
                 Data = response
+            };
+        }
+
+        public async Task<Response<string>> UnassignClassFromUserAsync(Guid UserId, Guid ClassId)
+        {
+            var request = new UnassignClassFromUserCommand { ClassId = ClassId, ProfileId = UserId };
+            await _mediator.Send(request);
+            return new Response<string>
+            {
+                StatusCode = 200,
+                Succeeded = true,
+                Errors = null,
+                Message = "User successfully unassigned from class"
             };
         }
     }

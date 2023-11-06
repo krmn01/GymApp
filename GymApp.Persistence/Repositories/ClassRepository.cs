@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,12 +19,13 @@ namespace GymApp.Persistence.Repositories
 
         public async Task<List<Class>> GetAllUsersClasses(Guid ProfileId)
         {
-            var classes = await _context.Set<Class>().AsNoTracking().ToListAsync();
+            var classes = await _context.Set<Class>().Include(a => a.Users).AsNoTracking().ToListAsync();
             List<Class> usersClasses = new List<Class>();
+
             foreach (var @class in classes)
-            {
-                if(@class.Id == ProfileId) usersClasses.Add(@class);
-            }
+                foreach (var user in @class.Users)
+                    if (user.Id == ProfileId) usersClasses.Add(@class);
+
             return usersClasses;
         }
     }

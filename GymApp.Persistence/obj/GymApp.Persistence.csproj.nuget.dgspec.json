@@ -71,10 +71,6 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.23, )"
-            },
-            "QRCoder": {
-              "target": "Package",
-              "version": "[1.4.3, )"
             }
           },
           "imports": [
@@ -203,6 +199,14 @@
               "version": "[6.0.23, )"
             },
             "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.4.2, )"
+            },
+            "System.Drawing.Common": {
               "target": "Package",
               "version": "[6.0.0, )"
             }

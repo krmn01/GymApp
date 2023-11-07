@@ -1,4 +1,5 @@
-﻿using GymApp.Application.Interfaces.Identity;
+﻿using GymApp.Application.Features.GymPass.Requests.GetGymPass;
+using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
 using Microsoft.AspNetCore.Authorization;
@@ -22,9 +23,16 @@ namespace GymApp.Api.Controllers
 
         [HttpPost("renew")]
         [Authorize]
-        public async Task<Response<string>> UnassignClassFromUser([FromHeader(Name = "Authorization")] string token, [FromBody]int days)
+        public async Task<Response<string>> RenewGymPassAsync([FromHeader(Name = "Authorization")] string token, [FromBody]int days)
         {
             return await _gymPassService.RenewAsync(_jwtHelper.GetProfileIdFromToken(token), days);
+        }
+
+        [HttpGet("get")]
+        [Authorize]
+        public async Task<Response<GymPassDTO>> GetGymPassAsync([FromHeader(Name = "Authorization")] string token)
+        {
+            return await _gymPassService.GetAsync(_jwtHelper.GetProfileIdFromToken(token));
         }
     }
 }

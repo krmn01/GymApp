@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uzDswQlLX+8IPwUYd8uadib3PaNVKsgMfO+SYjwItcWNB1RX6/HLsuF+ZYYd+iEyj8PzyuW0UUDUwK19yU7yWg==",
+  "dgSpecHash": "v2H1pNp6lGQz1ht86dFANqBrsrS+lSk853WCyDmrHhHCcDvEAbwUCfurEhb2vhODdPqfa+ERXbiI1gA/7K5Qtg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Application\\GymApp.Application.csproj",
   "expectedPackageFiles": [
@@ -30,7 +30,6 @@
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\qrcoder\\1.4.3\\qrcoder.1.4.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.1\\system.diagnostics.diagnosticsource.6.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"

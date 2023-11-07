@@ -92,3 +92,4 @@ C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\Microsoft.AspNet
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Identity.dll
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Identity.pdb
+C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\QRCoder.dll

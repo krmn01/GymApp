@@ -108,10 +108,9 @@ namespace GymApp.Identity.Services
                 ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001")
             };
 
-            var newProfileId= await _mediator.Send(newProfileCommand);
+            var newProfileId = await _mediator.Send(newProfileCommand);
 
             user.UserProfileId = newProfileId;
-           
 
             var result = await _userManager.CreateAsync(user, request.Password);
             if (result.Succeeded)

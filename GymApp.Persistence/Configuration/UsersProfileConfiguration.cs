@@ -22,7 +22,8 @@ namespace GymApp.Persistence.Configuration
                    Classes = new List<Class>(),
                    ProfileDescription = string.Empty,
                    ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
-                   UsersId = "753caff9-598a-42d9-aa00-bfa3be83096a"
+                   UsersId = "753caff9-598a-42d9-aa00-bfa3be83096a",
+                   GymPassId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                },
                 new UsersProfile
                 {
@@ -31,7 +32,8 @@ namespace GymApp.Persistence.Configuration
                     Classes = new List<Class>(),
                     ProfileDescription = string.Empty,
                     ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
-                    UsersId = "4a60b6be-42d4-4676-86ef-bbfe129011da"
+                    UsersId = "4a60b6be-42d4-4676-86ef-bbfe129011da",
+                    GymPassId = Guid.Parse("00000000-0000-0000-0000-000000000002")
                 }
             );
 
@@ -42,7 +44,8 @@ namespace GymApp.Persistence.Configuration
                    .WithMany(b => b.Users);
 
             builder.HasOne(a => a.Pass)
-                   .WithOne(b => b.User);
+                   .WithOne(b => b.Profile)
+                   .HasForeignKey<GymPass>(a => a.ProfileId);
 
         }
 

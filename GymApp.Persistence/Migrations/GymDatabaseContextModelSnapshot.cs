@@ -178,24 +178,42 @@ namespace GymApp.Persistence.Migrations
                     b.Property<int>("PassType")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("ProfileId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("StartedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("UpdatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime?>("ValidTill")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
+                    b.HasIndex("ProfileId")
                         .IsUnique();
 
                     b.ToTable("GymPasses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("00000000-0000-0000-0000-000000000001"),
+                            PassType = 0,
+                            ProfileId = new Guid("00000000-0000-0000-0000-000000000001"),
+                            StartedOn = new DateTime(2023, 11, 7, 21, 37, 8, 21, DateTimeKind.Local).AddTicks(3093),
+                            ValidTill = new DateTime(2023, 11, 7, 21, 37, 8, 21, DateTimeKind.Local).AddTicks(3062)
+                        },
+                        new
+                        {
+                            Id = new Guid("00000000-0000-0000-0000-000000000002"),
+                            PassType = 0,
+                            ProfileId = new Guid("00000000-0000-0000-0000-000000000002"),
+                            StartedOn = new DateTime(2023, 11, 7, 21, 37, 8, 21, DateTimeKind.Local).AddTicks(3098),
+                            ValidTill = new DateTime(2023, 11, 7, 21, 37, 8, 21, DateTimeKind.Local).AddTicks(3096)
+                        });
                 });
 
             modelBuilder.Entity("GymApp.Domain.Entities.PersonalTrainer", b =>
@@ -326,6 +344,9 @@ namespace GymApp.Persistence.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("GymPassId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ProfileDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -348,6 +369,7 @@ namespace GymApp.Persistence.Migrations
                         new
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
+                            GymPassId = new Guid("00000000-0000-0000-0000-000000000001"),
                             ProfileDescription = "",
                             ProfilePictureId = new Guid("00000000-0000-0000-0000-000000000001"),
                             UsersId = "753caff9-598a-42d9-aa00-bfa3be83096a"
@@ -355,6 +377,7 @@ namespace GymApp.Persistence.Migrations
                         new
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000002"),
+                            GymPassId = new Guid("00000000-0000-0000-0000-000000000002"),
                             ProfileDescription = "",
                             ProfilePictureId = new Guid("00000000-0000-0000-0000-000000000001"),
                             UsersId = "4a60b6be-42d4-4676-86ef-bbfe129011da"
@@ -400,13 +423,13 @@ namespace GymApp.Persistence.Migrations
 
             modelBuilder.Entity("GymApp.Domain.Entities.GymPass", b =>
                 {
-                    b.HasOne("GymApp.Domain.Entities.UsersProfile", "User")
+                    b.HasOne("GymApp.Domain.Entities.UsersProfile", "Profile")
                         .WithOne("Pass")
-                        .HasForeignKey("GymApp.Domain.Entities.GymPass", "UserId")
+                        .HasForeignKey("GymApp.Domain.Entities.GymPass", "ProfileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Profile");
                 });
 
             modelBuilder.Entity("GymApp.Domain.Entities.TrainingGoal", b =>

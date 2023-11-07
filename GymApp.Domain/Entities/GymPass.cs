@@ -11,9 +11,9 @@ namespace GymApp.Domain.Entities
 {
     public class GymPass :BaseEntity
     {
-        [ForeignKey("UserId")]
-        public Guid UserId { get; set; }
-        public UsersProfile User {  get; set; }
+        [ForeignKey("ProfileId")]
+        public Guid ProfileId { get; set; }
+        public UsersProfile Profile {  get; set; }
         public DateTime? ValidTill { get; set; }
         public DateTime? StartedOn { get; set; }
         public GymPassTypes PassType { get; set; }

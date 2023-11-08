@@ -24,13 +24,7 @@ namespace GymApp.Application.Features.UsersProfile.Commands.CreateUsersProfile
 
         public async Task<Guid> Handle(CreateUsersProfileCommand request, CancellationToken cancellationToken)
         {
-            var gymPass = new Domain.Entities.GymPass
-            {
-                Id = Guid.NewGuid(),
-                ValidTill = DateTime.Now,
-                StartedOn = DateTime.Now,
-            };
-
+            
             var newProfile = new Domain.Entities.UsersProfile
             {
                 Id = new Guid(),
@@ -39,12 +33,8 @@ namespace GymApp.Application.Features.UsersProfile.Commands.CreateUsersProfile
                 Classes = new List<Domain.Entities.Class>(),
                 ProfilePictureId = request.ProfilePictureId,
                 ProfileDescription = string.Empty,
-                GymPassId =  gymPass.Id
             };
-            
-            gymPass.ProfileId = newProfile.Id;
-
-            await _gymPassRepository.CreateAsync(gymPass);
+                        
             await _userProfileRepository.CreateAsync(newProfile);
             return newProfile.Id;
         }

@@ -26,13 +26,17 @@ namespace GymApp.Identity.Services
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly JwtSettings _jwtSettings;
         private readonly IMediator _mediator;
+        private readonly IGymPassRepository _gymPasses;
+        private readonly IUsersProfileRepository _usersProfile;
 
-        public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings, IMediator mediator)
+        public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings, IMediator mediator, IGymPassRepository gymPasses, IUsersProfileRepository usersProfile)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _jwtSettings = jwtSettings.Value;
             _mediator = mediator;
+            _gymPasses = gymPasses;
+            _usersProfile = usersProfile;
         }
 
         public async Task<AuthResponse> Login(AuthRequest request)
@@ -109,6 +113,16 @@ namespace GymApp.Identity.Services
             };
 
             var newProfileId = await _mediator.Send(newProfileCommand);
+
+            var gymPass = new Domain.Entities.GymPass
+            {
+                Id = Guid.NewGuid(),
+                ValidTill = DateTime.Now,
+                StartedOn = DateTime.Now,
+                ProfileId = newProfileId            
+            };
+            await _gymPasses.CreateAsync(gymPass);
+
 
             user.UserProfileId = newProfileId;
 

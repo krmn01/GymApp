@@ -31,7 +31,8 @@ namespace GymApp.Persistence.Configuration
             );
 
             builder.HasOne(a => a.Profile)
-                    .WithOne(b => b.Pass);
+                    .WithOne(b => b.Pass)
+                    .HasForeignKey<UsersProfile>(a => a.GymPassId);
                    
         }
     }

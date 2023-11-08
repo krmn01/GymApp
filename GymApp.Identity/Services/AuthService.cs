@@ -121,8 +121,13 @@ namespace GymApp.Identity.Services
                 StartedOn = DateTime.Now,
                 ProfileId = newProfileId            
             };
+
             await _gymPasses.CreateAsync(gymPass);
 
+            ///TODO: POPRAWIC TO ZEBY COMMAND HANDLER ZWRACAl OBIEkT PROFILU
+            var profile = await _usersProfile.GetByIdAsync(newProfileId);
+            profile.GymPassId = gymPass.Id;
+            await _usersProfile.UpdateAsync(profile);
 
             user.UserProfileId = newProfileId;
 

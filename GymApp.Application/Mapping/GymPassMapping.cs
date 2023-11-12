@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GymApp.Application.Features.GymPass.Requests.GetGymPass;
+using GymApp.Application.Features.GymPass.Queries.GetGymPass;
 using System;
 using System.Collections.Generic;
 using System.Linq;

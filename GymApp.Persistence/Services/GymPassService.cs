@@ -1,5 +1,5 @@
 ﻿using GymApp.Application.Features.GymPass.Commands.RenewGymPass;
-using GymApp.Application.Features.GymPass.Requests.GetGymPass;
+using GymApp.Application.Features.GymPass.Queries.GetGymPass;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
 using MediatR;

@@ -1,4 +1,6 @@
-﻿using GymApp.Application.Features.GymEntry.Commands.AddGymEntry;
+﻿using GymApp.Application.Features.GymEntry;
+using GymApp.Application.Features.GymEntry.Commands.AddGymEntry;
+using GymApp.Application.Features.GymEntry.Queries.GetWeekStats;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
 using MediatR;
@@ -29,6 +31,13 @@ namespace GymApp.Persistence.Services
                 Message = "Gym entry added",
                 Data = response.ToString()
             };
+        }
+
+        public async Task<Response<GymEntriesWeeklyStatsDTO>> GetWeekStats(Guid profileId)
+        {
+            var request = new GetWeekStatsQuery { profileId = profileId };
+            var response = await _mediator.Send(request);
+            return new Response<GymEntriesWeeklyStatsDTO> { StatusCode = 200, Succeeded = true, Data = response };
         }
     }
 }

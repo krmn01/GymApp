@@ -1,4 +1,5 @@
-﻿using GymApp.Application.Interfaces.Identity;
+﻿using GymApp.Application.Features.GymEntry;
+using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
 using GymApp.Persistence.Services;
@@ -27,6 +28,13 @@ namespace GymApp.Api.Controllers
         public async Task<Response<string>> AddGymEntry([FromHeader(Name = "Authorization")] string token, [FromBody] int timeInMinutes)
         {
             return await _gymEntryService.AddGymEntry(_jwtHelper.GetProfileIdFromToken(token), timeInMinutes);
+        }
+
+        [HttpGet("get-week-stats")]
+        [Authorize]
+        public async Task<Response<GymEntriesWeeklyStatsDTO>> AddGymEntry([FromHeader(Name = "Authorization")] string token)
+        {
+            return await _gymEntryService.GetWeekStats(_jwtHelper.GetProfileIdFromToken(token));
         }
     }
 }

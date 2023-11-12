@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GymApp.Application.Features.GymPass.Requests.GetGymPass
+namespace GymApp.Application.Features.GymPass.Queries.GetGymPass
 {
     public class GetGymPassCommand :IRequest<GymPassDTO>
     {

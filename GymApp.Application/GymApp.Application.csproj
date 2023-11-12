@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\GymEntry\Queries\" />
     <Folder Include="Features\UsersProfile\Queries\" />
   </ItemGroup>
 

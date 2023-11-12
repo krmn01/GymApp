@@ -1,0 +1,32 @@
+﻿using GymApp.Application.Interfaces.Identity;
+using GymApp.Application.Interfaces.Persistence;
+using GymApp.Domain.Common;
+using GymApp.Persistence.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace GymApp.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+
+    public class GymEntryController : ControllerBase
+    {
+        private readonly IJwtHelper _jwtHelper;
+        private readonly IGymEntryService _gymEntryService;
+
+        public GymEntryController(IJwtHelper jwtHelper, IGymEntryService gymEntryService)
+        {
+            _gymEntryService = gymEntryService;
+            _jwtHelper = jwtHelper;
+        }
+
+        [HttpPost("add-entry")]
+        [Authorize]
+        public async Task<Response<string>> AddGymEntry([FromHeader(Name = "Authorization")] string token, [FromBody] int timeInMinutes)
+        {
+            return await _gymEntryService.AddGymEntry(_jwtHelper.GetProfileIdFromToken(token), timeInMinutes);
+        }
+    }
+}

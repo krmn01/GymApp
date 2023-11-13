@@ -12,5 +12,6 @@ namespace GymApp.Application.Interfaces.Persistence
     {
         Task<Response<string>> AddGymEntry(Guid profileId, int timeInMinutes);
         Task<Response<GymEntriesWeeklyStatsDTO>> GetWeekStats(Guid profileId);
+        Task<Response<List<GymEntriesWeeklyStatsDTO>>> GetWeekRank();
     }
 }

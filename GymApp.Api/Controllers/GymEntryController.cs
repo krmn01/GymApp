@@ -32,9 +32,16 @@ namespace GymApp.Api.Controllers
 
         [HttpGet("get-week-stats")]
         [Authorize]
-        public async Task<Response<GymEntriesWeeklyStatsDTO>> AddGymEntry([FromHeader(Name = "Authorization")] string token)
+        public async Task<Response<GymEntriesWeeklyStatsDTO>> GetWeekStatsById([FromHeader(Name = "Authorization")] string token)
         {
             return await _gymEntryService.GetWeekStats(_jwtHelper.GetProfileIdFromToken(token));
+        }
+
+        [HttpGet("get-rank")]
+        [Authorize]
+        public async Task<Response<List<GymEntriesWeeklyStatsDTO>>> GetWeekRank()
+        {
+            return await _gymEntryService.GetWeekRank();
         }
     }
 }

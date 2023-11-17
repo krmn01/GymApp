@@ -18,6 +18,7 @@ namespace GymApp.Domain.Entities
         public List<UsersProfile> Users { get; set; }
 
         [ForeignKey("PersonalTrainerId")]
+        [Required]
         public Guid PersonalTrainerId { get; set; }
         public PersonalTrainer PersonalTrainer { get; set; }
         public int MaxUsers { get; set; }

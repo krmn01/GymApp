@@ -42,5 +42,12 @@ namespace GymApp.Api.Controllers
         {
             return await _trainerService.UpdatePersonalTrainer(Guid.Parse(id), updatedTrainer);
         }
+
+        [HttpDelete("{id}/delete")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<Response<string>> DeleteTrainer(string id)
+        {
+            return await _trainerService.DeleteTrainer(Guid.Parse(id));
+        }
     }
 }

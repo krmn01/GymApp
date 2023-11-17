@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Features.PersonalTrainer;
 using GymApp.Application.Features.PersonalTrainer.Commands.CreateNewTrainer;
+using GymApp.Application.Features.PersonalTrainer.Commands.DeleteTrainer;
 using GymApp.Application.Features.PersonalTrainer.Commands.UpdateTrainer;
 using GymApp.Application.Features.PersonalTrainer.GetAllPersonalTrainers;
 using GymApp.Application.Interfaces.Persistence;
@@ -59,6 +60,19 @@ namespace GymApp.Persistence.Services
             var request = new UpdateTrainersDataCommand { TrainerGuid = id, UpdatedTrainer = updateTrainer };
             var response = await _mediator.Send(request);
             return new Response<string> { Succeeded = true, StatusCode = 200, Message ="Trainer updated", Errors = null, Data = null };
+        }
+
+        public async Task<Response<string>> DeleteTrainer(Guid id)
+        {
+            var request = new DeleteTrainerCommand { TrainerId = id };
+            await _mediator.Send(request);
+            return new Response<string>
+            {
+                Succeeded = true,
+                StatusCode = 200,
+                Errors = null,
+                Data = null
+            };
         }
     }
 }

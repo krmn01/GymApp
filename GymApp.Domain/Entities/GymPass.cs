@@ -16,6 +16,5 @@ namespace GymApp.Domain.Entities
         public UsersProfile Profile {  get; set; }
         public DateTime? ValidTill { get; set; }
         public DateTime? StartedOn { get; set; }
-        public GymPassTypes PassType { get; set; }
     }
 }

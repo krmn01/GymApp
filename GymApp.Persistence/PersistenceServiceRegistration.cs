@@ -37,6 +37,7 @@ namespace GymApp.Persistence
             services.AddScoped<IQrService, QrService>();
             services.AddScoped<IGymPassService, GymPassService>();
             services.AddScoped<IGymEntryService, GymEntryService>();
+            services.AddScoped<IGymPassPriceRepository, GymPassPriceRepository>();
 
             return services;
         }

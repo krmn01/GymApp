@@ -175,9 +175,6 @@ namespace GymApp.Persistence.Migrations
                     b.Property<DateTime?>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PassType")
-                        .HasColumnType("int");
-
                     b.Property<Guid>("ProfileId")
                         .HasColumnType("uniqueidentifier");
 
@@ -201,18 +198,51 @@ namespace GymApp.Persistence.Migrations
                         new
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000001"),
-                            PassType = 0,
                             ProfileId = new Guid("00000000-0000-0000-0000-000000000001"),
-                            StartedOn = new DateTime(2023, 11, 8, 23, 28, 56, 484, DateTimeKind.Local).AddTicks(95),
-                            ValidTill = new DateTime(2023, 11, 8, 23, 28, 56, 484, DateTimeKind.Local).AddTicks(62)
+                            StartedOn = new DateTime(2023, 11, 20, 20, 58, 17, 60, DateTimeKind.Local).AddTicks(9730),
+                            ValidTill = new DateTime(2023, 11, 20, 20, 58, 17, 60, DateTimeKind.Local).AddTicks(9695)
                         },
                         new
                         {
                             Id = new Guid("00000000-0000-0000-0000-000000000002"),
-                            PassType = 0,
                             ProfileId = new Guid("00000000-0000-0000-0000-000000000002"),
-                            StartedOn = new DateTime(2023, 11, 8, 23, 28, 56, 484, DateTimeKind.Local).AddTicks(100),
-                            ValidTill = new DateTime(2023, 11, 8, 23, 28, 56, 484, DateTimeKind.Local).AddTicks(99)
+                            StartedOn = new DateTime(2023, 11, 20, 20, 58, 17, 60, DateTimeKind.Local).AddTicks(9734),
+                            ValidTill = new DateTime(2023, 11, 20, 20, 58, 17, 60, DateTimeKind.Local).AddTicks(9733)
+                        });
+                });
+
+            modelBuilder.Entity("GymApp.Domain.Entities.GymPassPrice", b =>
+                {
+                    b.Property<int>("Length")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Length");
+
+                    b.ToTable("GymPassPrice");
+
+                    b.HasData(
+                        new
+                        {
+                            Length = 0,
+                            Price = 99m
+                        },
+                        new
+                        {
+                            Length = 1,
+                            Price = 250m
+                        },
+                        new
+                        {
+                            Length = 2,
+                            Price = 450m
+                        },
+                        new
+                        {
+                            Length = 3,
+                            Price = 850m
                         });
                 });
 

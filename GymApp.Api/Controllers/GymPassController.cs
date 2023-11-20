@@ -1,7 +1,9 @@
 ﻿using GymApp.Application.Features.GymPass.Queries.GetGymPass;
+using GymApp.Application.Features.GymPass.Queries.GetGymPassPrices;
 using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
+using GymApp.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +35,13 @@ namespace GymApp.Api.Controllers
         public async Task<Response<GymPassDTO>> GetGymPassAsync([FromHeader(Name = "Authorization")] string token)
         {
             return await _gymPassService.GetAsync(_jwtHelper.GetProfileIdFromToken(token));
+        }
+
+        [HttpGet("prices")]
+        [Authorize]
+        public async Task<Response<List<GymPassPriceDTO>>> GetGymPassPricesAsync()
+        {
+           return await _gymPassService.GetPricesAsync();
         }
     }
 }

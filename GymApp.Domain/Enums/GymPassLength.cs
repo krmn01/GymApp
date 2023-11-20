@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GymApp.Domain.Enums
 {
-    public enum GymPassTypes
+    public enum GymPassLength
     {
-        Bronze,
-        Silver,
-        Gold,
-        Platinum
+        Month,
+        Quarter,
+        HalfYear,
+        Year
     }
 }

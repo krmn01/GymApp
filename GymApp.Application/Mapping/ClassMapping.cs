@@ -16,12 +16,14 @@ namespace GymApp.Application.Mapping
             CreateMap<ClassDTO, Domain.Entities.Class>()
                 .ForMember(dest => dest.StartTime, o => o.MapFrom(src => src.StartTime))
                 .ForMember(dest => dest.EndTime, o => o.MapFrom(src => src.EndTime))
-                .ForMember(dest => dest.DayOfWeek, o => o.MapFrom(src => src.DayOfWeek));
+                .ForMember(dest => dest.DayOfWeek, o => o.MapFrom(src => src.DayOfWeek))
+                .ForMember(dest => dest.PersonalTrainerId, o => o.MapFrom(src => src.TrainerId));
 
-            CreateMap<Domain.Entities.Class,ClassDTO>()
+            CreateMap<Domain.Entities.Class, ClassDTO>()
                 .ForMember(dest => dest.StartTime, o => o.MapFrom(src => src.StartTime.ToString("HH:mm")))
                 .ForMember(dest => dest.EndTime, o => o.MapFrom(src => src.EndTime.ToString("HH:mm")))
-                .ForMember(dest => dest.DayOfWeek, o => o.MapFrom(src => src.DayOfWeek));
+                .ForMember(dest => dest.DayOfWeek, o => o.MapFrom(src => src.DayOfWeek))
+                .ForMember(dest => dest.TrainerId, o => o.Ignore());
 
         }
     }

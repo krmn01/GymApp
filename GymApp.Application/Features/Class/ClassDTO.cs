@@ -16,6 +16,6 @@ namespace GymApp.Application.Features.Class
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public string DayOfWeek { get; set; }
-
+        public Guid? TrainerId { get; set; }
     }
 }

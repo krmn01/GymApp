@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Features.Class;
 using GymApp.Application.Features.Class.Commands;
+using GymApp.Application.Features.Class.Commands.AddClass;
 using GymApp.Application.Features.Class.Commands.UnassignClassFromUser;
 using GymApp.Application.Features.Class.Queries.GetUsersClasses;
 using GymApp.Application.Interfaces.Persistence;
@@ -19,6 +20,20 @@ namespace GymApp.Persistence.Services
         public ClassService(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        public async Task<Response<string>> AddNewClassAsync(ClassDTO Class)
+        {
+            var request = new AddClassCommand { ClassDTO = Class };
+            await _mediator.Send(request);
+            return new Response<string>
+            {
+                StatusCode = 200,
+                Succeeded = true,
+                Errors = null,
+                Message = "Class created",
+                Data = null
+            };
         }
 
         public async Task<Response<string>> AssignUserToClassAsync(Guid UserId, Guid ClassId)

@@ -20,9 +20,8 @@ namespace GymApp.Persistence.DatabaseContext
         public DbSet<TrainingGoal> TrainingGoals { get; set; }
         public DbSet<GymPass> GymPasses { get; set; }
         public DbSet<GymEntry> GymEntries { get; set; }
-
-        public DbSet<Class> ClassUsersProfiles { get; set; }
-
+        public DbSet<Class> ClassUsersProfiles { get; set; }     
+        public DbSet<GymPassPrice> GymPassPrices { get; set; }
 
         public GymDatabaseContext(DbContextOptions<GymDatabaseContext> options) :base(options) 
         {

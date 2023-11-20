@@ -1,4 +1,5 @@
 ﻿using GymApp.Application.Features.GymPass.Commands.RenewGymPass;
+using GymApp.Application.Features.GymPass.Commands.UpdateSpecificPrice;
 using GymApp.Application.Features.GymPass.Queries.GetGymPass;
 using GymApp.Application.Features.GymPass.Queries.GetGymPassPrices;
 using GymApp.Application.Interfaces.Persistence;
@@ -59,6 +60,18 @@ namespace GymApp.Persistence.Services
                 StatusCode = 200,
                 Succeeded = true,
                 Message = "Gym pass renewed"
+            };
+        }
+
+        public async Task<Response<string>> UpdatePriceAsync(GymPassPriceDTO price)
+        {
+            var request = new UpdateSpecificPriceCommand { GymPassPriceDTO = price };
+            await _mediator.Send(request);
+            return new Response<string>
+            {
+                StatusCode = 200,
+                Succeeded = true,
+                Message = "Price updated"
             };
         }
     }

@@ -43,5 +43,12 @@ namespace GymApp.Api.Controllers
         {
            return await _gymPassService.GetPricesAsync();
         }
+
+        [HttpPut("update-price")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<Response<string>> UpdatePriceAsync(GymPassPriceDTO dto)
+        {
+            return await _gymPassService.UpdatePriceAsync(dto);
+        }
     }
 }

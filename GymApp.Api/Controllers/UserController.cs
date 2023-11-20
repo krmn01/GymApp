@@ -49,6 +49,14 @@ namespace GymApp.Api.Controllers
             return await _userService.UpdateProfilePicture(id, Convert.FromBase64String(picture));
         }
 
+        [HttpPut("change-profile-data")]
+        [Authorize]
+        public async Task<Response<string>> ChangeProfileData([FromHeader(Name = "Authorization")] string token, [FromBody] ChangeUsersDataRequest request)
+        {
+            var id = _jwtHelper.GetIdFromToken(token);
+            return await _userService.ChangeUsersData(id, request);
+        }
+
         [HttpDelete("delete-account")]
         [Authorize]
         public async Task<Response<string>> DeleteUser([FromHeader(Name = "Authorization")] string token, [FromBody] string password)
@@ -57,13 +65,7 @@ namespace GymApp.Api.Controllers
             return await _userService.DeleteUser(id, password);
         }
 
-        [HttpPut("change-profile-data")]
-        [Authorize]
-        public async Task<Response<string>> ChangeProfileData([FromHeader(Name = "Authorization")] string token, [FromBody] ChangeUsersDataRequest request)
-        {
-            var id = _jwtHelper.GetIdFromToken(token);
-            return await _userService.ChangeUsersData(id, request);
-        }
+       
 
     }
 }

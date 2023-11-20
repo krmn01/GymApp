@@ -1,4 +1,5 @@
 ﻿using GymApp.Domain.Entities;
+using GymApp.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace GymApp.Application.Interfaces.Persistence
 {
     public interface IGymPassPriceRepository :IGenericRepository<GymPassPrice>
     {
+        public Task<GymPassPrice> GetPriceById(GymPassLength length);
     }
 }

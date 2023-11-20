@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Entities;
+using GymApp.Domain.Enums;
 using GymApp.Persistence.DatabaseContext;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,11 @@ namespace GymApp.Persistence.Repositories
     {
         public GymPassPriceRepository(GymDatabaseContext context) : base(context)
         {
+        }
+
+        public async Task<GymPassPrice> GetPriceById(GymPassLength length)
+        { 
+           return await _context.Set<GymPassPrice>().FindAsync(length);
         }
     }
 }

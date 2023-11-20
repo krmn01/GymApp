@@ -15,5 +15,6 @@ namespace GymApp.Application.Interfaces.Persistence
         Task<Response<string>> RenewAsync(Guid profileId, int days);
         Task<Response<GymPassDTO>> GetAsync(Guid profileId);
         Task<Response<List<GymPassPriceDTO>>> GetPricesAsync();
+        Task<Response<string>> UpdatePriceAsync(GymPassPriceDTO price);
     }
 }

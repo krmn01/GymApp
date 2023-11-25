@@ -2,6 +2,7 @@
 using GymApp.Application.Features.ProfilePicture.Commands.UpdatePicture;
 using GymApp.Application.Features.ProfilePicture.Queries.GetPicture;
 using GymApp.Application.Features.UsersProfile;
+using GymApp.Application.Features.UsersProfile.Commands.DeleteUsersProfile;
 using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Application.Models.Identity;
@@ -138,6 +139,8 @@ namespace GymApp.Identity.Services
             var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
 
             if (!result.Succeeded) throw new BadRequestException("Incorrect password", new FluentValidation.Results.ValidationResult());
+            var request = new DeleteUsersProfileCommand { ProfileId = user.UserProfileId };
+            await _mediator.Send(request);
             await _userManager.DeleteAsync(user);
 
             return new Response<string>

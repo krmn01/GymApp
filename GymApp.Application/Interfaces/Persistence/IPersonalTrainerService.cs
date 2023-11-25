@@ -18,6 +18,5 @@ namespace GymApp.Application.Interfaces.Persistence
         Task<Response<string>> CreateNewTrainer(NewTrainerDTO newTrainer);
         Task<Response<string>> UpdatePersonalTrainer(Guid id,UpdateTrainerDTO updateTrainer);
         Task<Response<string>> DeleteTrainer(Guid id);
-
     }
 }

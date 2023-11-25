@@ -1,4 +1,5 @@
 ﻿using GymApp.Application.Features.Class;
+using GymApp.Application.Features.Class.Commands.AddClass;
 using GymApp.Domain.Common;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,6 @@ namespace GymApp.Application.Interfaces.Persistence
         Task<Response<string>> UnassignClassFromUserAsync(Guid UserId, Guid ClassId);
 
         Task<Response<List<ClassDTO>>> GetUsersClassesAsync(Guid ProfileId);
-        Task<Response<string>> AddNewClassAsync(ClassDTO Class);
+        Task<Response<string>> AddNewClassAsync(AddClassDTO Class);
     }
 }

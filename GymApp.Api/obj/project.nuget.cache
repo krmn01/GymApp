@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "HqdrE2f2P7d7SN53a4D+rkKicFIw5xv7rGJd2ilkv0x27XY4dWhhSQXIYq5HnmvCvUKwh8aCL3OcVHuYj+tg4g==",
+  "dgSpecHash": "u7s9wbQ3gazB2XubqkH6QYAJAgmV2XnQn4HQwg5z++c9XMaBOwFYoUqHtDnutJ/xFSyWIP4PFpgBPNL9XUs7EQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Api\\GymApp.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation\\11.8.0\\fluentvalidation.11.8.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.8.0\\fluentvalidation.dependencyinjectionextensions.11.8.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",

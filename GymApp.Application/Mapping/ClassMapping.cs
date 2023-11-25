@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GymApp.Application.Features.Class;
+using GymApp.Application.Features.Class.Commands.AddClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,12 @@ namespace GymApp.Application.Mapping
         public ClassMapping() 
         {
             CreateMap<ClassDTO, Domain.Entities.Class>()
+                .ForMember(dest => dest.StartTime, o => o.MapFrom(src => src.StartTime))
+                .ForMember(dest => dest.EndTime, o => o.MapFrom(src => src.EndTime))
+                .ForMember(dest => dest.DayOfWeek, o => o.MapFrom(src => src.DayOfWeek))
+                .ForMember(dest => dest.PersonalTrainerId, o => o.MapFrom(src => src.TrainerId));
+
+            CreateMap<AddClassDTO, Domain.Entities.Class>()
                 .ForMember(dest => dest.StartTime, o => o.MapFrom(src => src.StartTime))
                 .ForMember(dest => dest.EndTime, o => o.MapFrom(src => src.EndTime))
                 .ForMember(dest => dest.DayOfWeek, o => o.MapFrom(src => src.DayOfWeek))

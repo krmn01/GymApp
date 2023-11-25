@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "PcgXNgb8Mkr+qfAZY2g41n0oWitaRh/1ddtjdY36jh4QL7FHiKG+89sLUZspInxaeAsXGIOG0RiFjludBEEOOg==",
+  "dgSpecHash": "xTX0otuTqKK2eLwYTntn9e3Rm1IHYuQczg39eXU0KyUrTjYX4nAklGN3Yg1CgITHikrINbzcXGBPKUHibWCitw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Domain\\GymApp.Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.23\\microsoft.aspnetcore.cryptography.internal.6.0.23.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.23\\microsoft.aspnetcore.cryptography.keyderivation.6.0.23.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.23\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.23.nupkg.sha512",

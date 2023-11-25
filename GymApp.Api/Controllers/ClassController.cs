@@ -1,4 +1,5 @@
 ﻿using GymApp.Application.Features.Class;
+using GymApp.Application.Features.Class.Commands.AddClass;
 using GymApp.Application.Features.PersonalTrainer.Commands.CreateNewTrainer;
 using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
@@ -37,7 +38,7 @@ namespace GymApp.Api.Controllers
 
         [HttpPost("add-class")]
         [Authorize(Roles = "Administrator")]
-        public async Task<Response<string>> AddNewClass(ClassDTO newClass)
+        public async Task<Response<string>> AddNewClass(AddClassDTO newClass)
         {
             return await _classService.AddNewClassAsync(newClass);
         }

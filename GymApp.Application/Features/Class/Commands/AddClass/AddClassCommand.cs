@@ -9,6 +9,6 @@ namespace GymApp.Application.Features.Class.Commands.AddClass
 {
     public class AddClassCommand :IRequest<Unit>
     {
-        public ClassDTO ClassDTO { get; set; }
+        public AddClassDTO ClassDTO { get; set; }
     }
 }

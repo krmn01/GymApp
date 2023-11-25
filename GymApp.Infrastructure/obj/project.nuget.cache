@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "2DoDjcSepBZwkxgC6dKmByv070QaBEPDUOGZiesfgj53xXEI/fvPGBFzXlK2Bu/Ae52zO9L4av24vojt0upXUw==",
+  "dgSpecHash": "YIOCIGWfj6798esnavEb5RpfE/6Y/EwRILcrs7qWFH+69mcWDEQDjyR1grlxSpVdoanazmMizUOZKw3CzVOjiQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Infrastructure\\GymApp.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation\\11.8.0\\fluentvalidation.11.8.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.8.0\\fluentvalidation.dependencyinjectionextensions.11.8.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",

@@ -1,13 +1,17 @@
-﻿using GymApp.Application.Features.Class;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using GymApp.Application.Features.Class;
 using GymApp.Application.Features.Class.Commands;
 using GymApp.Application.Features.Class.Commands.AddClass;
 using GymApp.Application.Features.Class.Commands.UnassignClassFromUser;
 using GymApp.Application.Features.Class.Queries.GetUsersClasses;
+using GymApp.Application.Interfaces.Helpers;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
 using MediatR;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +26,34 @@ namespace GymApp.Persistence.Services
             _mediator = mediator;
         }
 
-        public async Task<Response<string>> AddNewClassAsync(ClassDTO Class)
+        public async Task<Response<string>> AddNewClassAsync(AddClassDTO Class)
         {
             var request = new AddClassCommand { ClassDTO = Class };
-            await _mediator.Send(request);
+            var validator = new AddClassCommandValidator();
+            var validationResult = validator.Validate(request);
+            if (!validationResult.IsValid) return new Response<string>
+            {
+                StatusCode = 400,
+                Succeeded = false,
+                Message = null,
+                Errors = ValidationHelper.ValidationErrorsToString(validationResult.Errors)
+            };
+
+            try
+            {
+                await _mediator.Send(request);
+            }
+            catch(Exception ex)
+            {
+                return new Response<string>
+                {
+                    StatusCode = 400,
+                    Succeeded = false,
+                    Message = null,
+                    Errors = ex.Message
+                };
+            }
+
             return new Response<string>
             {
                 StatusCode = 200,

@@ -27,7 +27,9 @@ namespace GymApp.Application.Features.Class.Commands.AddClass
             var newClass = _mapper.Map<Domain.Entities.Class>(request.ClassDTO);
             var trainer = await _personalTrainerRepository.GetByIdAsync(newClass.PersonalTrainerId) ??
                 throw new NotFoundException(new Domain.Entities.PersonalTrainer(), newClass.PersonalTrainerId.ToString());
-          
+
+            newClass.Id = new Guid();
+
             await _classRepository.CreateAsync(newClass);
             trainer.Classes.Add(newClass);
             await _personalTrainerRepository.UpdateAsync(trainer);

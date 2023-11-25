@@ -25,28 +25,40 @@ namespace GymApp.Persistence.Services
         public async Task<Response<string>> AddGymEntry(Guid profileId, int timeInMinutes)
         {
            var request = new AddGymEntryCommand { profileId = profileId, timeInMinutes = timeInMinutes };
-           var response = await _mediator.Send(request);
-            return new Response<string>
+            try
             {
-                StatusCode = 200,
-                Succeeded = true,
-                Message = "Gym entry added",
-                Data = response.ToString()
-            };
+                var response = await _mediator.Send(request);
+                return new SuccessRequestResponse<string>("Gym entry added",response.ToString());
+            }catch (Exception ex)
+            {
+                return new BadRequestResponse<string>(ex.Message);
+            }
         }
 
         public async Task<Response<List<GymEntriesWeeklyStatsDTO>>> GetWeekRank()
         {
             var request = new GetWeekStatsRankQuery();
-            var response = await _mediator.Send(request);
-            return new Response<List<GymEntriesWeeklyStatsDTO>> { StatusCode = 200, Succeeded = true, Data = response };
+            try
+            {
+                var response = await _mediator.Send(request);
+                return new SuccessRequestResponse<List<GymEntriesWeeklyStatsDTO>>(data: response);
+            }catch(Exception ex)
+            {
+                return new BadRequestResponse<List<GymEntriesWeeklyStatsDTO>>(ex.Message);
+            }
         }
 
         public async Task<Response<GymEntriesWeeklyStatsDTO>> GetWeekStats(Guid profileId)
         {
             var request = new GetWeekStatsQuery { profileId = profileId };
-            var response = await _mediator.Send(request);
-            return new Response<GymEntriesWeeklyStatsDTO> { StatusCode = 200, Succeeded = true, Data = response };
+            try
+            {
+                var response = await _mediator.Send(request);
+                return new SuccessRequestResponse<GymEntriesWeeklyStatsDTO>(data: response);
+            }catch(Exception ex)
+            {
+                return new BadRequestResponse<GymEntriesWeeklyStatsDTO>(ex.Message);
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ namespace GymApp.Application.Features.Class.Commands.AddClass
             RuleFor(x => x.ClassDTO.EndTime).NotNull().NotEmpty().WithMessage("End time cannot be null");
             RuleFor(x => x.ClassDTO.DayOfWeek).NotNull().NotEmpty().WithMessage("Day of week cannot be null");
             RuleFor(x => x.ClassDTO.TrainerId).NotNull().NotEmpty().WithMessage("Trainer id cannot be null");
-            RuleFor(x => x.ClassDTO.StartTime).LessThan(x => x.ClassDTO.EndTime).WithMessage("Start time must be greater than the end time");
+            RuleFor(x => x.ClassDTO.StartTime).LessThan(x => x.ClassDTO.EndTime).WithMessage("End time must be greater than start time");
             RuleFor(x => x.ClassDTO.MaxUsers).NotNull().InclusiveBetween(1, 50).WithMessage("Max users count must be greater than 0 and fewer than 50");
         }
     }

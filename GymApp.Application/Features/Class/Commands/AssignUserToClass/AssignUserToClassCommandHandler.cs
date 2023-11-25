@@ -28,13 +28,10 @@ namespace GymApp.Application.Features.Class.Commands
             if (user == null) throw new NotFoundException(new Domain.Entities.UsersProfile(), request.UserProfileId.ToString());
 
             if (targetClass.Users == null) targetClass.Users = new List<Domain.Entities.UsersProfile>();
-           // if (user.Classes == null) user.Classes = new List<Domain.Entities.Class>();
 
+            if (targetClass.Users.Count > targetClass.MaxUsers) throw new BadRequestException("Class already has reached maximum users count");   
             targetClass.Users.Add(user);
-            //user.Classes.Append(targetClass);
-            
             await _classRepository.UpdateAsync(targetClass);
-            //await _usersProfileRepository.UpdateAsync(user);
 
             return Unit.Value;
         }

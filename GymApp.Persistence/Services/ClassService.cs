@@ -31,13 +31,9 @@ namespace GymApp.Persistence.Services
             var request = new AddClassCommand { ClassDTO = Class };
             var validator = new AddClassCommandValidator();
             var validationResult = validator.Validate(request);
-            if (!validationResult.IsValid) return new Response<string>
-            {
-                StatusCode = 400,
-                Succeeded = false,
-                Message = null,
-                Errors = ValidationHelper.ValidationErrorsToString(validationResult.Errors)
-            };
+            
+            if (!validationResult.IsValid) 
+                return new BadRequestResponse<string>(ValidationHelper.ValidationErrorsToString(validationResult.Errors));
 
             try
             {
@@ -45,64 +41,50 @@ namespace GymApp.Persistence.Services
             }
             catch(Exception ex)
             {
-                return new Response<string>
-                {
-                    StatusCode = 400,
-                    Succeeded = false,
-                    Message = null,
-                    Errors = ex.Message
-                };
+                return new BadRequestResponse<string>(ex.Message);
             }
 
-            return new Response<string>
-            {
-                StatusCode = 200,
-                Succeeded = true,
-                Errors = null,
-                Message = "Class created",
-                Data = null
-            };
+            return new SuccessRequestResponse<string>("Class created");
         }
 
         public async Task<Response<string>> AssignUserToClassAsync(Guid UserId, Guid ClassId)
         {
-            var request = new AssignUserToClassCommand { UserProfileId = UserId, ClassId = ClassId };
-            await _mediator.Send(request);
-
-            return new Response<string>
+            try
             {
-                StatusCode = 200,
-                Succeeded = true,
-                Errors = null,
-                Message = "User successfully assigned to class",
-                Data = null
-            };
+                var request = new AssignUserToClassCommand { UserProfileId = UserId, ClassId = ClassId };
+                await _mediator.Send(request);
+            }catch(Exception ex)
+            {
+                return new BadRequestResponse<string>(ex.Message);
+            }
+
+            return new SuccessRequestResponse<string>("User successfully assigned to class");
         }
 
         public async Task<Response<List<ClassDTO>>> GetUsersClassesAsync(Guid ProfileId)
         {
             var request = new GetUsersClassesQuery { ProfileId = ProfileId };
-            var response = await _mediator.Send(request);
-            return new Response<List<ClassDTO>>
+            try
             {
-                StatusCode = 200,
-                Succeeded = true,
-                Errors = null,
-                Data = response
-            };
+                var response = await _mediator.Send(request);
+                return new SuccessRequestResponse<List<ClassDTO>>(data: response);
+            }catch(Exception ex)
+            {
+                return new BadRequestResponse<List<ClassDTO>>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> UnassignClassFromUserAsync(Guid UserId, Guid ClassId)
         {
             var request = new UnassignClassFromUserCommand { ClassId = ClassId, ProfileId = UserId };
-            await _mediator.Send(request);
-            return new Response<string>
+            try
             {
-                StatusCode = 200,
-                Succeeded = true,
-                Errors = null,
-                Message = "User successfully unassigned from class"
-            };
+                await _mediator.Send(request);
+                return new SuccessRequestResponse<string>("User successfully unassigned from class");
+            }catch(Exception ex)
+            {
+                return new BadRequestResponse<string>(ex.Message);
+            }
         }
     }
 }

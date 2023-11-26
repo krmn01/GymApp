@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GymApp.Application.Features.ProfilePicture;
 using GymApp.Application.Features.TrainingGoal;
+using GymApp.Application.Features.TrainingGoal.Commands.AddTrainingGoal;
 using GymApp.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace GymApp.Application.Mapping
         {
             CreateMap<TrainingGoalDTO, TrainingGoal>()
                     .ReverseMap();
+
         }
     }
 }

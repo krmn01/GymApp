@@ -8,8 +8,8 @@ namespace GymApp.Application.Features.TrainingGoal
 {
     public class TrainingGoalDTO
     {
-        public Guid Id { get; set; }
-        public string Content { get; set; }
-        public bool Finished { get; set; }
+        public Guid Id { get; set; } = new Guid();
+        public string Content { get; set; } = string.Empty;
+        public bool Finished { get; set; } = false;
     }
 }

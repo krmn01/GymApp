@@ -22,9 +22,8 @@ namespace GymApp.Application.Features.TrainingGoal.Commands.AddTrainingGoal
         public async Task<Guid> Handle(AddTrainingGoalCommand request, CancellationToken cancellationToken)
         {
             var map = _mapper.Map<Domain.Entities.TrainingGoal>(request.TrainingGoalDTO);
-            map.Id = new Guid();
             map.ProfileId = request.ProfileId;
-            map.Finished = false;
+
             await _trainingGoalsRepository.CreateAsync(map);
             return map.Id;
         }

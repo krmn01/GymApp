@@ -36,7 +36,7 @@ namespace GymApp.Api.Controllers
             return await _trainerService.CreateNewTrainer(newTrainer);
         }
 
-        [HttpPut("{id}/update")]
+        [HttpPatch("{id}/update")]
         [Authorize(Roles = "Administrator")]
         public async Task<Response<string>> UpdateTrainerPersonalData(string id,[FromBody] UpdateTrainerDTO updatedTrainer)
         {

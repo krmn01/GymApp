@@ -3,6 +3,7 @@ using GymApp.Application.Features.PersonalTrainer.Commands.CreateNewTrainer;
 using GymApp.Application.Features.PersonalTrainer.Commands.DeleteTrainer;
 using GymApp.Application.Features.PersonalTrainer.Commands.UpdateTrainer;
 using GymApp.Application.Features.PersonalTrainer.GetAllPersonalTrainers;
+using GymApp.Application.Interfaces.Helpers;
 using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Common;
 using GymApp.Domain.Entities;
@@ -26,28 +27,34 @@ namespace GymApp.Persistence.Services
         public async Task<Response<List<PersonalTrainerDTO>>> GetAllTrainers()
         {
             var request = new GetAllPersonalTrainersQuery { };
-            var response = await _mediator.Send(request);
-            return new Response<List<PersonalTrainerDTO>>
+            try
             {
-                Succeeded = true,
-                StatusCode = 200,
-                Errors = null,
-                Data = response
-            };
+                var response = await _mediator.Send(request);
+                return new SuccessRequestResponse<List<PersonalTrainerDTO>>(data:response);
+            }catch (Exception ex)
+            {
+                return new BadRequestResponse<List<PersonalTrainerDTO>>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> CreateNewTrainer(NewTrainerDTO newTrainer)
         {
             var request = new CreateNewTrainerCommand { NewTrainer = newTrainer };
-            var response = await _mediator.Send(request);
-            return new Response<string>
+            try 
             {
-                Succeeded = true,
-                StatusCode = 200,
-                Errors = null,
-                Message = "Trainer created",
-                Data = response.ToString()
-            };
+                var validator = new CreateNewTrainerCommandValidator();
+                var validationResult = validator.Validate(request);
+
+                if (!validationResult.IsValid)
+                    return new BadRequestResponse<string>(ValidationHelper.ValidationErrorsToString(validationResult.Errors));
+
+                var response = await _mediator.Send(request);
+                return new SuccessRequestResponse<string>("Trainer created", response.ToString());
+            }
+            catch(Exception ex)
+            {
+                return new BadRequestResponse<string>(ex.Message);
+            }
         }
 
         public Task<Response<PersonalTrainerDTO>> GetPersonalTrainerById(Guid id)
@@ -58,21 +65,35 @@ namespace GymApp.Persistence.Services
         public async Task<Response<string>> UpdatePersonalTrainer(Guid id,UpdateTrainerDTO updateTrainer)
         {
             var request = new UpdateTrainersDataCommand { TrainerGuid = id, UpdatedTrainer = updateTrainer };
-            var response = await _mediator.Send(request);
-            return new Response<string> { Succeeded = true, StatusCode = 200, Message ="Trainer updated", Errors = null, Data = null };
+            try
+            {
+                var validator = new UpdateTrainersDataCommandValidator();
+                var validationResult = validator.Validate(request);
+
+                if (!validationResult.IsValid)
+                    return new BadRequestResponse<string>(ValidationHelper.ValidationErrorsToString(validationResult.Errors));
+
+                var response = await _mediator.Send(request);
+                return new SuccessRequestResponse<string>("Trainer updated");
+            }
+            catch(Exception ex) 
+            {
+                return new BadRequestResponse<string>(ex.Message);
+            }
         }
 
         public async Task<Response<string>> DeleteTrainer(Guid id)
         {
             var request = new DeleteTrainerCommand { TrainerId = id };
-            await _mediator.Send(request);
-            return new Response<string>
+            try
             {
-                Succeeded = true,
-                StatusCode = 200,
-                Errors = null,
-                Data = null
-            };
+                await _mediator.Send(request);
+                return new SuccessRequestResponse<string>("Trainer deleted");
+            }
+            catch(Exception ex)
+            {
+                return new BadRequestResponse<string>(ex.Message);
+            }
         }
     }
 }

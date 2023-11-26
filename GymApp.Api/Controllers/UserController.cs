@@ -49,7 +49,7 @@ namespace GymApp.Api.Controllers
             return await _userService.UpdateProfilePicture(id, Convert.FromBase64String(picture));
         }
 
-        [HttpPut("change-profile-data")]
+        [HttpPatch("change-profile-data")]
         [Authorize]
         public async Task<Response<string>> ChangeProfileData([FromHeader(Name = "Authorization")] string token, [FromBody] ChangeUsersDataRequest request)
         {

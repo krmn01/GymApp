@@ -19,7 +19,6 @@ namespace GymApp.Domain.Entities
         public string Surname { get; set; } = string.Empty;
 
         [Required]
-        [StringLength(9)]
         public string PhoneNumber { get;set; } = string.Empty;
 
         [Required]

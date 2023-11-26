@@ -24,9 +24,16 @@ namespace GymApp.Api.Controllers
 
         [HttpGet("get-all")]
         [Authorize]
-        public async Task<Response<List<PersonalTrainerDTO>>> GetAllTrainers([FromHeader(Name = "Authorization")] string token)
+        public async Task<Response<List<PersonalTrainerDTO>>> GetAllTrainers()
         {
             return await _trainerService.GetAllTrainers();
+        }
+
+        [HttpGet("{id}/get")]
+        [Authorize]
+        public async Task<Response<PersonalTrainerDTO>> GetTrainerById(Guid id)
+        {
+            return await _trainerService.GetPersonalTrainerById(id);
         }
 
         [HttpPost("create")]

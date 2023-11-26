@@ -21,5 +21,9 @@ namespace GymApp.Persistence.Repositories
             return await _context.Set<PersonalTrainer>().Include(p => p.Classes).AsNoTracking().ToListAsync();
         }
 
+        public override async Task<PersonalTrainer> GetByIdAsync(Guid id)
+        {
+            return await _context.Set<PersonalTrainer>().Include(p => p.Classes).FirstAsync(p => p.Id == id);
+        }
     }
 }

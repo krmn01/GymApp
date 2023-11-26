@@ -13,6 +13,7 @@ namespace GymApp.Application.Features.Class
         public Guid Id { get; set; }
         public string ClassName { get; set; }
         public int MaxUsers { get; set; }
+        public int UsersCount { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public string DayOfWeek { get; set; }

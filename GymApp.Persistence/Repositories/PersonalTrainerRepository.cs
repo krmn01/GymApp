@@ -18,7 +18,7 @@ namespace GymApp.Persistence.Repositories
 
         public override async Task<List<PersonalTrainer>> GetAllAsync() 
         {
-            return await _context.Set<PersonalTrainer>().Include(p => p.Classes).AsNoTracking().ToListAsync();
+            return await _context.Set<PersonalTrainer>().Include(p => p.Classes).ThenInclude(c => c.Users).AsNoTracking().ToListAsync();
         }
 
         public override async Task<PersonalTrainer> GetByIdAsync(Guid id)

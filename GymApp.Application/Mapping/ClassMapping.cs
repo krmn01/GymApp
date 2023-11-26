@@ -30,6 +30,7 @@ namespace GymApp.Application.Mapping
                 .ForMember(dest => dest.StartTime, o => o.MapFrom(src => src.StartTime.ToString("HH:mm")))
                 .ForMember(dest => dest.EndTime, o => o.MapFrom(src => src.EndTime.ToString("HH:mm")))
                 .ForMember(dest => dest.DayOfWeek, o => o.MapFrom(src => src.DayOfWeek))
+                .ForMember(dest => dest.UsersCount, o => o.MapFrom(src => src.Users.Count))
                 .ForMember(dest => dest.TrainerId, o => o.MapFrom(src => src.PersonalTrainerId));
 
         }

@@ -50,5 +50,12 @@ namespace GymApp.Api.Controllers
         {
             return await _classService.GetUsersClassesAsync(_jwtHelper.GetProfileIdFromToken(token));
         }
+
+        [HttpGet("{id}/delete")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<Response<string>> DeleteClass([FromHeader(Name = "Authorization")] string token)
+        {
+            return await _classService.GetUsersClassesAsync(_jwtHelper.GetProfileIdFromToken(token));
+        }
     }
 }

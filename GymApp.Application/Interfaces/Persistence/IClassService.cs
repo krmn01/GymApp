@@ -17,5 +17,6 @@ namespace GymApp.Application.Interfaces.Persistence
 
         Task<Response<List<ClassDTO>>> GetUsersClassesAsync(Guid ProfileId);
         Task<Response<string>> AddNewClassAsync(AddClassDTO Class);
+        Task<Response<string>> DeleteClassAsync(string classId);
     }
 }

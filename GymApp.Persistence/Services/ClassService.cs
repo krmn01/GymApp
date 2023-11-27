@@ -3,11 +3,14 @@ using FluentValidation.Results;
 using GymApp.Application.Features.Class;
 using GymApp.Application.Features.Class.Commands;
 using GymApp.Application.Features.Class.Commands.AddClass;
+using GymApp.Application.Features.Class.Commands.DeleteClass;
 using GymApp.Application.Features.Class.Commands.UnassignClassFromUser;
 using GymApp.Application.Features.Class.Queries.GetUsersClasses;
 using GymApp.Application.Interfaces.Helpers;
 using GymApp.Application.Interfaces.Persistence;
+using GymApp.Application.Models.Identity;
 using GymApp.Domain.Common;
+using GymApp.Domain.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -59,6 +62,21 @@ namespace GymApp.Persistence.Services
             }
 
             return new SuccessRequestResponse<string>("User successfully assigned to class");
+        }
+
+        public async Task<Response<string>> DeleteClassAsync(string classId)
+        {
+            try
+            {
+                var request = new DeleteClassCommand{ ClassId = Guid.Parse(classId) };
+                await _mediator.Send(request);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestResponse<string>(ex.Message);
+            }
+
+            return new SuccessRequestResponse<string>("Class deleted successfully");
         }
 
         public async Task<Response<List<ClassDTO>>> GetUsersClassesAsync(Guid ProfileId)

@@ -19,8 +19,8 @@ namespace GymApp.Application.Features.PersonalTrainer.Commands.UpdateTrainer
         }
         public async Task<Unit> Handle(UpdateTrainersDataCommand request, CancellationToken cancellationToken)
         {
-            var trainer = await _trainers.GetByIdAsync(request.TrainerGuid);
-            if (trainer == null) throw new NotFoundException(new Domain.Entities.PersonalTrainer(), request.TrainerGuid.ToString());
+            var trainer = await _trainers.GetByIdAsync(request.TrainerGuid) ??
+                 throw new NotFoundException(new Domain.Entities.PersonalTrainer(), request.TrainerGuid.ToString());
 
             trainer.Name = request.UpdatedTrainer.Name != null ? request.UpdatedTrainer.Name : trainer.Name;
             trainer.Surname = request.UpdatedTrainer.Surname != null ? request.UpdatedTrainer.Surname : trainer.Surname;

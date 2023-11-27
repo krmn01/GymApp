@@ -5,6 +5,7 @@ using GymApp.Application.Features.Class.Commands;
 using GymApp.Application.Features.Class.Commands.AddClass;
 using GymApp.Application.Features.Class.Commands.DeleteClass;
 using GymApp.Application.Features.Class.Commands.UnassignClassFromUser;
+using GymApp.Application.Features.Class.Commands.UpdateClass;
 using GymApp.Application.Features.Class.Queries.GetUsersClasses;
 using GymApp.Application.Interfaces.Helpers;
 using GymApp.Application.Interfaces.Persistence;
@@ -100,6 +101,27 @@ namespace GymApp.Persistence.Services
                 await _mediator.Send(request);
                 return new SuccessRequestResponse<string>("User successfully unassigned from class");
             }catch(Exception ex)
+            {
+                return new BadRequestResponse<string>(ex.Message);
+            }
+        }
+
+        public async Task<Response<string>> UpdateClassAsync(string id, UpdateClassDTO Class)
+        {
+           
+            try
+            {
+                var request = new UpdateClassCommand { ClassId = Guid.Parse(id), UpdatedClass = Class };
+                var validator = new UpdateClassCommandValidator();
+                var validationResult = validator.Validate(request);
+
+                if (!validationResult.IsValid) 
+                    return new BadRequestResponse<string>(ValidationHelper.ValidationErrorsToString(validationResult.Errors));
+
+                await _mediator.Send(request);
+                return new SuccessRequestResponse<string>("Class updated successfully");
+            }
+            catch (Exception ex)
             {
                 return new BadRequestResponse<string>(ex.Message);
             }

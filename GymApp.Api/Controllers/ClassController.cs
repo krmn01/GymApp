@@ -1,5 +1,6 @@
 ﻿using GymApp.Application.Features.Class;
 using GymApp.Application.Features.Class.Commands.AddClass;
+using GymApp.Application.Features.Class.Commands.UpdateClass;
 using GymApp.Application.Features.PersonalTrainer.Commands.CreateNewTrainer;
 using GymApp.Application.Interfaces.Identity;
 using GymApp.Application.Interfaces.Persistence;
@@ -51,11 +52,18 @@ namespace GymApp.Api.Controllers
             return await _classService.GetUsersClassesAsync(_jwtHelper.GetProfileIdFromToken(token));
         }
 
-        [HttpGet("{id}/delete")]
+        [HttpPatch("{id}/update")]
         [Authorize(Roles = "Administrator")]
-        public async Task<Response<string>> DeleteClass([FromHeader(Name = "Authorization")] string token)
+        public async Task<Response<string>> UpdateClass(string id, UpdateClassDTO dto)
         {
-            return await _classService.GetUsersClassesAsync(_jwtHelper.GetProfileIdFromToken(token));
+            return await _classService.UpdateClassAsync(id,dto);
+        }
+
+        [HttpDelete("{id}/delete")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<Response<string>> DeleteClass(string id)
+        {
+            return await _classService.DeleteClassAsync(id);
         }
     }
 }

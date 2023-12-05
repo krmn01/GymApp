@@ -13,18 +13,16 @@ namespace GymApp.Application.Features.TrainingGoal.Commands.ToggleTrainingGoal
 {
     public class ToggleTrainingGoalCommandHandler : IRequestHandler<ToggleTrainingGoalCommand,Unit>
     {
-        private readonly IMapper _mapper;
         private readonly ITrainingGoalsRepository _trainingGoalsRepository;
 
-        public ToggleTrainingGoalCommandHandler(IMapper mapper, ITrainingGoalsRepository trainingGoalsRepository)
+        public ToggleTrainingGoalCommandHandler(ITrainingGoalsRepository trainingGoalsRepository)
         {
-            _mapper = mapper;
             _trainingGoalsRepository = trainingGoalsRepository;
         }
         public async Task<Unit> Handle(ToggleTrainingGoalCommand request, CancellationToken cancellationToken)
         {
-            var goal = await _trainingGoalsRepository.GetByIdAsync(request.TrainingGoalId);
-            if (goal == null) throw new NotFoundException(new Domain.Entities.TrainingGoal(),request.TrainingGoalId.ToString());
+            var goal = await _trainingGoalsRepository.GetByIdAsync(request.TrainingGoalId) ??
+                throw new NotFoundException(new Domain.Entities.TrainingGoal(),request.TrainingGoalId.ToString());
             if (goal.ProfileId != request.ProfileId) throw new BadRequestException("You're not authorized to update this goal", new FluentValidation.Results.ValidationResult());
 
             goal.Finished = !goal.Finished;

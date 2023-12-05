@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GymApp.Application.Features.PersonalTrainer.Queries.GetPersonalTrainerById
 {
-    public class GetPersonalTrainerByIdCommand :IRequest<PersonalTrainerDTO>
+    public class GetPersonalTrainerByIdQuery :IRequest<PersonalTrainerDTO>
     {
         public Guid Id { get; set; }
     }

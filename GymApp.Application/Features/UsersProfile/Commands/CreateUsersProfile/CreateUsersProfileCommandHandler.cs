@@ -13,13 +13,9 @@ namespace GymApp.Application.Features.UsersProfile.Commands.CreateUsersProfile
     public class CreateUsersProfileCommandHandler : IRequestHandler<CreateUsersProfileCommand,Guid>
     {
         private readonly IUsersProfileRepository _userProfileRepository;
-        private readonly IGymPassRepository _gymPassRepository;
-        private readonly IMapper _mapper;
-        public CreateUsersProfileCommandHandler(IUsersProfileRepository profileRepository, IMapper mapper, IGymPassRepository gymPassRepository)
+        public CreateUsersProfileCommandHandler(IUsersProfileRepository profileRepository)
         {
-            _mapper = mapper;
             _userProfileRepository = profileRepository;
-            _gymPassRepository = gymPassRepository;
         }
 
         public async Task<Guid> Handle(CreateUsersProfileCommand request, CancellationToken cancellationToken)

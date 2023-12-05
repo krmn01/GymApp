@@ -25,8 +25,6 @@ namespace GymApp.Application.Features.PersonalTrainer.Commands.CreateNewTrainer
             var map = _mapper.Map<Domain.Entities.PersonalTrainer>(request.NewTrainer);
             map.Id = new Guid();
             map.Classes = new List<Domain.Entities.Class>();
-            map.CreatedOn = DateTime.Now;
-            map.UpdatedOn = DateTime.Now;
             await _trainers.CreateAsync(map);
             return map.Id;
         }

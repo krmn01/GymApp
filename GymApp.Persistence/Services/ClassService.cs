@@ -55,7 +55,7 @@ namespace GymApp.Persistence.Services
         {
             try
             {
-                var request = new AssignUserToClassCommand { UserProfileId = UserId, ClassId = ClassId };
+                var request = new UnassignUserFromClassCommand { UserProfileId = UserId, ClassId = ClassId };
                 await _mediator.Send(request);
             }catch(Exception ex)
             {
@@ -95,7 +95,7 @@ namespace GymApp.Persistence.Services
 
         public async Task<Response<string>> UnassignClassFromUserAsync(Guid UserId, Guid ClassId)
         {
-            var request = new UnassignClassFromUserCommand { ClassId = ClassId, ProfileId = UserId };
+            var request = new UnassignClassFromClassCommand { ClassId = ClassId, ProfileId = UserId };
             try
             {
                 await _mediator.Send(request);

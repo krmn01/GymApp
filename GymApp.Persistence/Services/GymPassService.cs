@@ -29,7 +29,7 @@ namespace GymApp.Persistence.Services
 
         public async Task<Response<GymPassDTO>> GetAsync(Guid profileId)
         {
-            var request = new GetGymPassCommand { ProfileId = profileId };
+            var request = new GetGymPassQuery { ProfileId = profileId };
             try
             {
                 var response = await _mediator.Send(request);

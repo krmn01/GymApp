@@ -15,12 +15,9 @@ namespace GymApp.Application.Features.GymPass.Commands.UpdateSpecificPrice
     public class UpdateSpecificPriceCommandHandler : IRequestHandler<UpdateSpecificPriceCommand>
     {
         private readonly IGymPassPriceRepository _priceRepository;
-        private readonly IMapper _mapper;
-
-        public UpdateSpecificPriceCommandHandler(IGymPassPriceRepository priceRepository, IMapper mapper)
+        public UpdateSpecificPriceCommandHandler(IGymPassPriceRepository priceRepository)
         {
             _priceRepository = priceRepository;
-            _mapper = mapper;
         }
         public async Task<Unit> Handle(UpdateSpecificPriceCommand request, CancellationToken cancellationToken)
         {

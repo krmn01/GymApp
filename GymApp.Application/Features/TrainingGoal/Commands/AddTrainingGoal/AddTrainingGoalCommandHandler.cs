@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GymApp.Application.Exceptions;
 using GymApp.Application.Interfaces.Persistence;
 using MediatR;
 using System;

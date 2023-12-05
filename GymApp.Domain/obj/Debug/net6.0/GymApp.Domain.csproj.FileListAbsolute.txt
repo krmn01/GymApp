@@ -10,3 +10,16 @@ C:\Users\Admin\Documents\net\GymApp\GymApp.Domain\obj\Debug\net6.0\GymApp.Domain
 C:\Users\Admin\Documents\net\GymApp\GymApp.Domain\obj\Debug\net6.0\refint\GymApp.Domain.dll
 C:\Users\Admin\Documents\net\GymApp\GymApp.Domain\obj\Debug\net6.0\GymApp.Domain.pdb
 C:\Users\Admin\Documents\net\GymApp\GymApp.Domain\obj\Debug\net6.0\ref\GymApp.Domain.dll
+C:\gym\GymApp\GymApp.Domain\obj\Debug\net6.0\GymApp.Domain.csproj.AssemblyReference.cache
+C:\gym\GymApp\GymApp.Domain\obj\Debug\net6.0\GymApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\gym\GymApp\GymApp.Domain\obj\Debug\net6.0\GymApp.Domain.AssemblyInfoInputs.cache
+C:\gym\GymApp\GymApp.Domain\obj\Debug\net6.0\GymApp.Domain.AssemblyInfo.cs
+C:\gym\GymApp\GymApp.Domain\obj\Debug\net6.0\GymApp.Domain.csproj.CoreCompileInputs.cache
+C:\gym\GymApp\GymApp.Domain\obj\Debug\net6.0\GymApp.Domain.dll
+C:\gym\GymApp\GymApp.Domain\obj\Debug\net6.0\refint\GymApp.Domain.dll
+C:\gym\GymApp\GymApp.Domain\obj\Debug\net6.0\GymApp.Domain.pdb
+C:\gym\GymApp\GymApp.Domain\bin\Debug\net6.0\GymApp.Domain.deps.json
+C:\gym\GymApp\GymApp.Domain\bin\Debug\net6.0\GymApp.Domain.dll
+C:\gym\GymApp\GymApp.Domain\bin\Debug\net6.0\GymApp.Domain.pdb
+C:\gym\GymApp\GymApp.Domain\obj\Debug\net6.0\ref\GymApp.Domain.dll
+C:\Users\Admin\Documents\net\GymApp\GymApp.Domain\obj\Debug\net6.0\GymApp.Domain.sourcelink.json

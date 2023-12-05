@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace GymApp.Application.Features.PersonalTrainer.Queries.GetPersonalTrainerById
 {
-    public class GetPersonalTrainerByIdCommandHandler : IRequestHandler<GetPersonalTrainerByIdCommand, PersonalTrainerDTO>
+    public class GetPersonalTrainerByIdQueryHandler : IRequestHandler<GetPersonalTrainerByIdQuery, PersonalTrainerDTO>
     {
         private readonly IPersonalTrainerRepository _personalTrainerRepository;
         private readonly IMapper _mapper;
-        public GetPersonalTrainerByIdCommandHandler(IPersonalTrainerRepository personalTrainerRepository, IMapper mapper)
+        public GetPersonalTrainerByIdQueryHandler(IPersonalTrainerRepository personalTrainerRepository, IMapper mapper)
         {
             _personalTrainerRepository = personalTrainerRepository;
             _mapper = mapper;
         }
-        public async Task<PersonalTrainerDTO> Handle(GetPersonalTrainerByIdCommand request, CancellationToken cancellationToken)
+        public async Task<PersonalTrainerDTO> Handle(GetPersonalTrainerByIdQuery request, CancellationToken cancellationToken)
         {
             var trainer = await _personalTrainerRepository.GetByIdAsync(request.Id) ??
                 throw new NotFoundException(new Domain.Entities.PersonalTrainer(), request.Id.ToString());

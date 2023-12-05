@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GymApp.Application.Features.Class.Commands.UnassignClassFromUser
 {
-    public class UnassignClassFromUserCommand :IRequest<Unit>
+    public class UnassignClassFromClassCommand :IRequest<Unit>
     {
         public Guid ProfileId { get; set;}
         public Guid ClassId { get; set;}

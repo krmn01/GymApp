@@ -1,6 +1,8 @@
-﻿using GymApp.Application.Interfaces.Persistence;
+﻿using Castle.Components.DictionaryAdapter.Xml;
+using GymApp.Application.Interfaces.Persistence;
 using GymApp.Domain.Entities;
 using GymApp.Domain.Enums;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -77,9 +79,22 @@ namespace GymApp.UnitTests.Mocks
                 return Task.CompletedTask;
             });
 
+            mockRepository.Setup(r => r.GetWeekEntriesCount(It.IsAny<Guid>())).Returns((Guid Id) =>
+            {
+                var entriesCount = entries.Where(a => a.GymPassId == Id).ToList().Count;
+                return Task.FromResult(entriesCount);
+            });
+
+            mockRepository.Setup(r => r.GetTotalWeekTime(It.IsAny<Guid>())).Returns((Guid Id) =>
+            {
+                var userEntries = entries.Where(a => a.GymPassId == Id).ToList();
+                TimeSpan total = new(0, 0, 0);
+                foreach(var entry in userEntries) 
+                    total += (TimeSpan)(entry.ExitedOn - entry.EnteredOn) != null ? (TimeSpan)(entry.ExitedOn - entry.EnteredOn) : new TimeSpan(0, 0, 0);
+                return Task.FromResult(total);
+            });
 
             return mockRepository;
-
         }
     }
 }

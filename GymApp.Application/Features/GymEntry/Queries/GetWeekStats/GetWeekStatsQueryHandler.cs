@@ -23,8 +23,8 @@ namespace GymApp.Application.Features.GymEntry.Queries.GetWeekStats
         {
             var user = await _userProfileRepository.GetByIdAsync(request.profileId) ??
                 throw new NotFoundException(new Domain.Entities.UsersProfile(), request.profileId.ToString());
-            var entriesCount = await _gymEntryRepository.GetWeekEntriesCount(request.profileId);
-            var timeSpent = await _gymEntryRepository.GetTotalWeekTime(request.profileId);
+            var entriesCount = await _gymEntryRepository.GetWeekEntriesCount(user.GymPassId);
+            var timeSpent = await _gymEntryRepository.GetTotalWeekTime(user.GymPassId);
             return new GymEntriesWeeklyStatsDTO
             {
                 numberOfEntries = entriesCount,

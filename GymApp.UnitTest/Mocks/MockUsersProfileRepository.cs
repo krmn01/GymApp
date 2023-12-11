@@ -20,7 +20,7 @@ namespace GymApp.UnitTests.Mocks
                        Id = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                        Classes = new List<Class>(),
                        GymPassId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
-               
+                       ProfilePictureId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                        TrainingGoals = new List<TrainingGoal>()
                    },
                    new UsersProfile

@@ -28,9 +28,4 @@
     <ProjectReference Include="..\GymApp.Application\GymApp.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\GymEntry\Commands\" />
-    <Folder Include="Features\GymEntry\Queries\" />
-  </ItemGroup>
-
 </Project>

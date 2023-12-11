@@ -14,7 +14,7 @@ namespace GymApp.Application.Features.GymEntry.Commands.AddGymEntry
         private readonly IUsersProfileRepository _userProfileRepository;
         private readonly IGymEntryRepository _gymEntryRepository;
 
-        public AddGymEntryCommandHandler(IGymEntryRepository gymEntryRepository,IUsersProfileRepository usersProfileRepository)
+        public AddGymEntryCommandHandler(IGymEntryRepository gymEntryRepository, IUsersProfileRepository usersProfileRepository)
         {
             _gymEntryRepository = gymEntryRepository;
             _userProfileRepository = usersProfileRepository;
@@ -23,6 +23,9 @@ namespace GymApp.Application.Features.GymEntry.Commands.AddGymEntry
         {
             var user = await _userProfileRepository.GetByIdAsync(request.profileId) ??
                 throw new NotFoundException(new Domain.Entities.UsersProfile(), request.profileId.ToString());
+
+            if (request.timeInMinutes < 1) throw new BadRequestException("Time in minutes must be greater than 0");
+
             var newEntry = new Domain.Entities.GymEntry
             {
                 Id = new Guid(),

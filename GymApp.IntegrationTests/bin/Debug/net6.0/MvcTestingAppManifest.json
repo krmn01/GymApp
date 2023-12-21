@@ -1,0 +1,7 @@
+{
+  "GymApp.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Api",
+  "GymApp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Application",
+  "GymApp.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Domain",
+  "GymApp.Identity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Identity",
+  "GymApp.Persistence, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Persistence"
+}

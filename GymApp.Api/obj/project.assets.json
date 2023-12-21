@@ -1643,19 +1643,6 @@
           "bin/placeholder/GymApp.Identity.dll": {}
         }
       },
-      "GymApp.Infrastructure/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "GymApp.Application": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/GymApp.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/GymApp.Infrastructure.dll": {}
-        }
-      },
       "GymApp.Persistence/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -4058,11 +4045,6 @@
       "path": "../GymApp.Identity/GymApp.Identity.csproj",
       "msbuildProject": "../GymApp.Identity/GymApp.Identity.csproj"
     },
-    "GymApp.Infrastructure/1.0.0": {
-      "type": "project",
-      "path": "../GymApp.Infrastructure/GymApp.Infrastructure.csproj",
-      "msbuildProject": "../GymApp.Infrastructure/GymApp.Infrastructure.csproj"
-    },
     "GymApp.Persistence/1.0.0": {
       "type": "project",
       "path": "../GymApp.Persistence/GymApp.Persistence.csproj",
@@ -4073,7 +4055,6 @@
     "net6.0": [
       "GymApp.Application >= 1.0.0",
       "GymApp.Identity >= 1.0.0",
-      "GymApp.Infrastructure >= 1.0.0",
       "GymApp.Persistence >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.23",
       "Swashbuckle.AspNetCore >= 6.5.0",
@@ -4112,9 +4093,6 @@
             },
             "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Identity\\GymApp.Identity.csproj": {
               "projectPath": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Identity\\GymApp.Identity.csproj"
-            },
-            "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Infrastructure\\GymApp.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Infrastructure\\GymApp.Infrastructure.csproj"
             },
             "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Persistence\\GymApp.Persistence.csproj": {
               "projectPath": "C:\\Users\\Admin\\Documents\\net\\GymApp\\GymApp.Persistence\\GymApp.Persistence.csproj"

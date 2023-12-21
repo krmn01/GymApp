@@ -57,10 +57,8 @@ C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\runtimes\win\lib
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Application.dll
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Domain.dll
-C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Infrastructure.dll
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Persistence.dll
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Application.pdb
-C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Infrastructure.pdb
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Persistence.pdb
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\bin\Debug\net6.0\GymApp.Domain.pdb
 C:\Users\Admin\Documents\net\GymApp\GymApp.Api\obj\Debug\net6.0\GymApp.Api.csproj.AssemblyReference.cache

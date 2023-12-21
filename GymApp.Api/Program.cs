@@ -1,4 +1,3 @@
-using GymApp.Infrastructure;
 using GymApp.Application;
 using GymApp.Persistence;
 using GymApp.Identity;
@@ -15,7 +14,6 @@ namespace GymApp.Api
 
             // Add services to the container.
             builder.Services.AddApplicationServices();
-            builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddPersistenceServices(builder.Configuration);
             builder.Services.AddIdentityServices(builder.Configuration);
 
